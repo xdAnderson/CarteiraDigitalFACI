@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteY="279dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_entrar"
         android:layout_width="150dp"
         android:layout_height="36dp"
         android:layout_marginBottom="12dp"
@@ -85,7 +85,7 @@
         android:ems="10"
         android:hint="  senha"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/bt_entrar"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="@+id/imageView" />

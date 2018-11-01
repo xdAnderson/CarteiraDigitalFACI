@@ -1,8 +1,11 @@
 package com.example.lpa.carteiradigitalfaci_pt.view;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,6 +19,18 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/futura.ttf");
+        Button btlogar = findViewById(R.id.bt_entrar);
+
+        btlogar.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent i = new Intent(Login.this, navigation.class);
+                   startActivity(i);
+                   finish();
+               }
+           }
+
+        );
 
         TextView tvEsqueci = findViewById(R.id.tvEsqueci);
         tvEsqueci.setTypeface(font);
