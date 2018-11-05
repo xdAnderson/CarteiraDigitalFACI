@@ -2,139 +2,148 @@ package com.example.lpa.carteiradigitalfaci_pt.datamodel;
 
 public class DocumentoDataModel {
 
-    public static String criarTabela1() {
-        String qr = "";
-        qr = "CREATE TABLE IF NOT EXISTS 'TIPODOCOBRIGATORIO' (\n" +
-                "  'IDOBRIGATORIO' INT(11) NOT NULL,\n" +
-                "  'NUMCSMRES' VARCHAR(4) NULL,\n" +
-                "  'SERIERES' VARCHAR(2) NULL,\n" +
-                "  'RARES' VARCHAR(16) NULL,\n" +
-                "  'NOMECOMPRES' VARCHAR(50) NULL,\n" +
-                "  'DATADISRES' DATE NULL,\n" +
-                "  'MOTIVODISRES' VARCHAR(70) NULL,\n" +
-                "  'NOMECOMTIT' VARCHAR(50) NULL,\n" +
-                "  'DATANASCTIT' DATE NULL,\n" +
-                "  'NUMINSCTIT' VARCHAR(15) NULL,\n" +
-                "  'DVTIT' VARCHAR(15) NULL,\n" +
-                "  'ZONATIT' VARCHAR(5) NULL,\n" +
-                "  'SECAOTIT' VARCHAR(6) NULL,\n" +
-                "  'MUNICPIOTIT' VARCHAR(30) NULL,\n" +
-                "  PRIMARY KEY ('IDOBRIGATORIO'));\n";
+    public static String criarTabelaCertidao() {
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'certidao' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'cpf_certidao' VARCHAR(12) NULL,\n" +
+                "  'nome_certidao' VARCHAR(50) NULL,\n" +
+                "  'matricula_certidao' VARCHAR(33) NULL,\n" +
+                "  'dn_extenso_certidao' VARCHAR(50) NULL,\n" +
+                "  'dn_certidao' DATE NULL,\n" +
+                "  'hora_nasc_certidao' VARCHAR(50) NULL,\n" +
+                "  'municipio_nasc_certidao' VARCHAR(30) NULL,\n" +
+                "  'federacao_nasc_certidao' VARCHAR(2) NULL,\n" +
+                "  'municipio_reg_certidao' VARCHAR(30) NULL,\n" +
+                "  'federacao_reg_certidao' VARCHAR(2) NULL,\n" +
+                "  'local_nasc_certidao' VARCHAR(30) NULL,\n" +
+                "  'sexo_certidao' VARCHAR(10) NULL,\n" +
+                "  'filiacao_mae_certidao' VARCHAR(50) NULL,\n" +
+                "  'filiacao_pai_certidao' VARCHAR(50) NULL,\n" +
+                "  'avoh_mat_certidao' VARCHAR(50) NULL,\n" +
+                "  'avom_mat_certidao' VARCHAR(50) NULL,\n" +
+                "  'avoh_pat_certidao' VARCHAR(50) NULL,\n" +
+                "  'avom_pat_certidao' VARCHAR(50) NULL,\n" +
+                "  'gemeo_certidao' INT (1) NULL,\n" +
+                "  'nome_mat_gemeos_certidao' VARCHAR(255) NULL,\n" +
+                "  'data_reg_extenso_certidao' VARCHAR(50) NULL,\n" +
+                "  'n_nasc_vivo_certidao' VARCHAR(40) NULL,\n" +
+                "  'anot_averb_certidao' VARCHAR(200) NULL,\n" +
+                "  'nome_oficio_certidao' VARCHAR(50) NULL,\n" +
+                "  'oficial_certidao' VARCHAR(50) NULL,\n" +
+                "  'end_ofic_certidao' VARCHAR(100) NULL,\n" +
+                "  'telefone_ofic_certidao' VARCHAR(20) NULL,\n" +
+                "  'email_ofic_certidao' VARCHAR(30) NULL,\n" +
+                "  PRIMARY KEY ('matricula_certidao'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
     }
-    public static String criarTabela2(){
-        String qr = "";
-        qr =
-                    "CREATE TABLE IF NOT EXISTS 'TIPODOCPRINCIPAL' (\n" +
-                "  'IDPRINCIPAL' INT(11) NOT NULL,\n" +
-                "  'NOMECERT' VARCHAR(50) NULL,\n" +
-                "  'DATANASCCERT' DATE NULL,\n" +
-                "  'HORANASCCERT' VARCHAR(10) NULL,\n" +
-                "  'MUNICNASCCERT' VARCHAR(30) NULL,\n" +
-                "  'UFNASCCERT' VARCHAR(2) NULL,\n" +
-                "  'NOMECOMPMAE' VARCHAR(50) NULL,\n" +
-                "  'NOMECOMPPAI' VARCHAR(50) NULL,\n" +
-                "  'NOMECOMPAVOY' VARCHAR(50) NULL,\n" +
-                "  'NOMECOMPAVOX' VARCHAR(50) NULL,\n" +
-                "  'NUMNASCVIVO' INT(11) NULL,\n" +
-                "  'NUMRG' VARCHAR(7) NULL,\n" +
-                "  'NOMECOMPRG' VARCHAR(50) NULL,\n" +
-                "  'DATANASCRG' DATE NULL,\n" +
-                "  'NOMECOMPCPF' VARCHAR(50) NULL,\n" +
-                "  'NUMCPF' VARCHAR(16) NULL,\n" +
-                "  'DATANASCCPF' DATE NULL,\n" +
-                "  'TIPODOCOBRIGATORIO_IDOBRIGATORIO' INT(11) NOT NULL,\n" +
-                "  PRIMARY KEY ('IDPRINCIPAL'),\n" +
-                "    FOREIGN KEY ('TIPODOCOBRIGATORIO_IDOBRIGATORIO')\n" +
-                "    REFERENCES 'TIPODOCOBRIGATORIO' ('IDOBRIGATORIO'));\n";
+    public static String criarTabelaCNH(){
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'cnh' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'numero_reg_cnh_cnh' VARCHAR(20) NULL,\n" +
+                "  'rg_orgao_uf_cnh' VARCHAR(10) NULL,\n" +
+                "  'cpf_cnh' VARCHAR(13) NULL,\n" +
+                "  'dn_cnh' DATE NULL,\n" +
+                "  'filiacao_mae_rg' VARCHAR(50) NULL,\n" +
+                "  'filiacao_pai_rg' VARCHAR(50) NULL,\n" +
+                "  'permissao_cnh' VARCHAR(30) NULL,\n" +
+                "  'acc_cnh' VARCHAR(10) NULL,\n" +
+                "  'categoria_cnh' VARCHAR(10) NULL,\n" +
+                "  'validade_cnh' DATE NULL,\n" +
+                "  'primeira_cnh_cnh' DATE NULL,\n" +
+                "  'local_cnh' VARCHAR(30) NULL,\n" +
+                "  'data_emissao_cnh' DATE NULL,\n" +
+                "  PRIMARY KEY ('numero_reg_cnh_cnh'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
     }
-    public static String criarTabela3(){
-        String qr = "";
-        qr =
-            "CREATE TABLE IF NOT EXISTS 'CADASTRO' (\n" +
-                "  'IDUSER' INT(11) NOT NULL,\n" +
-                "  'EMAIL' VARCHAR(50) NOT NULL,\n" +
-                "  'SENHA' VARCHAR(20) NULL,\n" +
-                "  'STATUS' VARCHAR(20) NULL,\n" +
-                "  'TIPODOCPRINCIPAL_IDPRINCIPAL' INT(11) NOT NULL,\n" +
-                "  PRIMARY KEY ('IDUSER'),\n" +
-                "  FOREIGN KEY ('TIPODOCPRINCIPAL_IDPRINCIPAL')\n" +
-                "    REFERENCES 'TIPODOCPRINCIPAL' ('IDPRINCIPAL'));\n";
+    public static String criarTabelaCPF(){
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'cpf' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'numero_cpf' VARCHAR(12) NOT NULL,\n" +
+                "  'nome_cpf' VARCHAR(50) NULL,\n" +
+                "  'nome_social_cpf' VARCHAR(50) NULL,\n" +
+                "  'dn_cpf' DATE NULL,\n" +
+                "  PRIMARY KEY ('numero_cpf'),\n"+
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
     }
-    public static String criarTabela4(){
-        String qr = "";
-        qr =
-
-            "CREATE TABLE IF NOT EXISTS 'PESSOAFISICA' (\n" +
-                "  'IDPES' INT(11) NOT NULL,\n" +
-                "  'NOMECOMP' VARCHAR(60) NOT NULL,\n" +
-                "  'SEXO' VARCHAR(9) NULL,\n" +
-                "  'CADASTRO_IDUSER' INT(11) NOT NULL,\n" +
-                "  PRIMARY KEY ('IDPES'),\n" +
-                "    FOREIGN KEY ('CADASTRO_IDUSER')\n" +
-                "    REFERENCES 'CADASTRO' ('IDUSER'));\n";
-        return qr;
-    }
-    public static String criarTabela5(){
-        String qr = "";
+    public static String criarTabelaOutros(){
+        String qr;
         qr =
 
-            "CREATE TABLE IF NOT EXISTS 'LOCAISEMISSAO' (\n" +
-                "  'IDLOCAISEMISSAO' INT(11) NOT NULL,\n" +
-                "  'UFREGISCERT' VARCHAR(20) NULL,\n" +
-                "  'DOCLOCALRG' VARCHAR(50) NULL,\n" +
-                "  'MUNICIPIOEMIRES' VARCHAR(20) NULL,\n" +
-                "  'UFEMIRES' VARCHAR(20) NULL,\n" +
-                "  'UFTIT' VARCHAR(20) NULL,\n" +
-                "  'CIDADEEMICNH' VARCHAR(20) NULL,\n" +
-                "  'UFCNH' VARCHAR(20) NULL,\n" +
-                "  'UFCTPS' VARCHAR(20) NULL,\n" +
-                "  'UFRG' VARCHAR(20) NULL,\n" +
-                "  PRIMARY KEY ('IDLOCAISEMISSAO'));\n";
+            "CREATE TABLE IF NOT EXISTS 'outros' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'id_outros' VARCHAR(255) NOT NULL,\n" +
+                "  'campo1' VARCHAR(100) NULL,\n" +
+                "  'campo2' VARCHAR(100) NULL,\n" +
+                "  'campo3' VARCHAR(100) NULL,\n" +
+                "  'campo4' VARCHAR(100) NULL,\n" +
+                "  'campo5' VARCHAR(100) NULL,\n" +
+                "  'campo6' VARCHAR(100) NULL,\n" +
+                "  'campo7' VARCHAR(100) NULL,\n" +
+                "  'campo8' VARCHAR(100) NULL,\n" +
+                "  'campo9' VARCHAR(100) NULL,\n" +
+                "  'campo10' VARCHAR(100) NULL,\n" +
+                "  PRIMARY KEY ('id_outros'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
     }
-    public static String criarTabela6(){
-        String qr = "";
-        qr =
-
-            "CREATE TABLE IF NOT EXISTS 'DADOREGISTRO' (\n" +
-                "  'IDDADOREGISTRO' INT(11) NOT NULL,\n" +
-                "  'DATAREGISNASC' DATE NULL,\n" +
-                "  'OBSCERT' VARCHAR(60) NULL,\n" +
-                "  'OBSCNH' VARCHAR(60) NULL,\n" +
-                "  'DATAEXPRG' DATE NULL,\n" +
-                "  'DATAEMIRES' DATE NULL,\n" +
-                "  'DATAEMITIT' DATE NULL,\n" +
-                "  'DATAEMICNH' DATE NULL,\n" +
-                "  'CADASTRO_IDUSER' INT(11) NOT NULL,\n" +
-                "  'LOCAISEMISSAO_IDLOCAISEMISSAO' INT(11) NOT NULL,\n" +
-                "  PRIMARY KEY ('IDDADOREGISTRO'),\n" +
-                "    FOREIGN KEY ('CADASTRO_IDUSER')\n" +
-                "    REFERENCES 'CADASTRO' ('IDUSER'),\n" +
-                "    FOREIGN KEY ('LOCAISEMISSAO_IDLOCAISEMISSAO')\n" +
-                "    REFERENCES 'LOCAISEMISSAO' ('IDLOCAISEMISSAO'));\n";
+    public static String criarTabelaReservista(){
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'reservista' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'reg_alist_reservista' VARCHAR(15) NULL,\n" +
+                "  'numero_reservista' VARCHAR(10) NULL,\n" +
+                "  'serie_reservista' VARCHAR(5) NULL,\n" +
+                "  'csm_reservista' VARCHAR(5) NULL,\n" +
+                "  'nome_reservista' VARCHAR(50) NULL,\n" +
+                "  'emissao_reservista' VARCHAR(100) NULL,\n" +
+                "  PRIMARY KEY ('reg_alist_reservista'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
     }
-    public static String criarTabela7(){
-        String qr = "";
-        qr =
-
-            "CREATE TABLE IF NOT EXISTS 'TIPODOCNAOOBRIGATORIO' (\n" +
-                "  'IDDOCNAOOBRIGATORIO' INT(11) NOT NULL,\n" +
-                "  'NOMECOMPCNH' VARCHAR(50) NULL,\n" +
-                "  'PERMISSAOCNH' VARCHAR(12) NULL,\n" +
-                "  'ACCCNH' VARCHAR(10) NULL,\n" +
-                "  'CATHABCNH' VARCHAR(2) NULL,\n" +
-                "  'NUMCNH' VARCHAR(16) NULL,\n" +
-                "  'VALIDADECNH' DATE NULL,\n" +
-                "  'HABANTCNH' DATE NULL,\n" +
-                "  'PISCTPS' VARCHAR(15) NULL,\n" +
-                "  'NUMCTPS' VARCHAR(8) NULL,\n" +
-                "  'SERIECTPS' VARCHAR(5) NULL,\n" +
-                "  'NOMECTPS' VARCHAR(50) NULL,\n" +
-                "  PRIMARY KEY ('IDDOCNAOOBRIGATORIO'));";
+    public static String criarTabelaRG(){
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'rg' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'numero_rg_rg' INT(11) NULL,\n" +
+                "  'data_expedicao_rg' DATE NULL,\n" +
+                "  'nome_rg' VARCHAR(50) NULL,\n" +
+                "  'filiacao_mae_rg' VARCHAR(50) NULL,\n" +
+                "  'filiacao_pai_rg' VARCHAR(50) NULL,\n" +
+                "  'naturalidade_rg' VARCHAR(30) NULL,\n" +
+                "  'dn_rg' DATE NULL,\n" +
+                "  'doc_origem_rg' VARCHAR(100) NOT NULL,\n" +
+                "  'cpf_rg' VARCHAR(12) NOT NULL,\n" +
+                "  'foto_rg' BLOB NOT NULL,\n" +
+                "  PRIMARY KEY ('numero_rg_rg'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
+        return qr;
+    }
+    public static String criarTabelaTitulo(){
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'titulo' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'num_insc_dv_titulo' VARCHAR(15) NULL,\n" +
+                "  'nome_titulo' VARCHAR(50) NULL,\n" +
+                "  'dn_titulo' DATE NULL,\n" +
+                "  'zona_titulo' VARCHAR(5) NULL,\n" +
+                "  'secao_titulo' VARCHAR(5) NULL,\n" +
+                "  'munic_uf_titulo' VARCHAR(30) NULL,\n" +
+                "  'data_emissao_titulo' DATE NULL,\n" +
+                "  PRIMARY KEY ('num_insc_dv_titulo'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
     }
 }

@@ -39,17 +39,6 @@ public class Documento {
     private String CPF_numcpf;
     private String CPF_datanasccpf;
 
-    //Cadastro de Usuário
-    private int iduser;
-    private String USER_email;
-    private String USER_senha;
-    private String USER_status;
-
-    //Pessoa Física
-    private int USER_idpes;
-    private String USER_nomecomp;
-    private String USER_sexo;
-
     //Locais de Emissão
     private int idlocaisemissao;
     private String CERTIDAO_ufregscert;
@@ -347,62 +336,6 @@ public class Documento {
 
     public void setCPF_datanasccpf(String CPF_datanasccpf) {
         this.CPF_datanasccpf = CPF_datanasccpf;
-    }
-
-    public int getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
-    }
-
-    public String getUSER_email() {
-        return USER_email;
-    }
-
-    public void setUSER_email(String USER_email) {
-        this.USER_email = USER_email;
-    }
-
-    public String getUSER_senha() {
-        return USER_senha;
-    }
-
-    public void setUSER_senha(String USER_senha) {
-        this.USER_senha = USER_senha;
-    }
-
-    public String getUSER_status() {
-        return USER_status;
-    }
-
-    public void setUSER_status(String USER_status) {
-        this.USER_status = USER_status;
-    }
-
-    public int getUSER_idpes() {
-        return USER_idpes;
-    }
-
-    public void setUSER_idpes(int USER_idpes) {
-        this.USER_idpes = USER_idpes;
-    }
-
-    public String getUSER_nomecomp() {
-        return USER_nomecomp;
-    }
-
-    public void setUSER_nomecomp(String USER_nomecomp) {
-        this.USER_nomecomp = USER_nomecomp;
-    }
-
-    public String getUSER_sexo() {
-        return USER_sexo;
-    }
-
-    public void setUSER_sexo(String USER_sexo) {
-        this.USER_sexo = USER_sexo;
     }
 
     public int getIdlocaisemissao() {

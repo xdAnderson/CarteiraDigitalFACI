@@ -1,10 +1,10 @@
 package com.example.lpa.carteiradigitalfaci_pt.datasource;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.lpa.carteiradigitalfaci_pt.datamodel.DocumentoDataModel;
+import com.example.lpa.carteiradigitalfaci_pt.datamodel.UsuarioDataModel;
 
 public class DataSource extends SQLiteOpenHelper {
 
@@ -20,17 +20,21 @@ public class DataSource extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         try{
-            db.execSQL(DocumentoDataModel.criarTabela1());
-            db.execSQL(DocumentoDataModel.criarTabela2());
-            db.execSQL(DocumentoDataModel.criarTabela3());
-            db.execSQL(DocumentoDataModel.criarTabela4());
-            db.execSQL(DocumentoDataModel.criarTabela5());
-            db.execSQL(DocumentoDataModel.criarTabela6());
-            db.execSQL(DocumentoDataModel.criarTabela7());
+            db.execSQL(UsuarioDataModel.criarTabelaUsuario());
+            db.execSQL(DocumentoDataModel.criarTabelaCertidao());
+            db.execSQL(DocumentoDataModel.criarTabelaCNH());
+            db.execSQL(DocumentoDataModel.criarTabelaCPF());
+            db.execSQL(DocumentoDataModel.criarTabelaReservista());
+            db.execSQL(DocumentoDataModel.criarTabelaRG());
+            db.execSQL(DocumentoDataModel.criarTabelaTitulo());
+            db.execSQL(DocumentoDataModel.criarTabelaOutros());
+            db.execSQL(DocumentoDataModel.criarTabelaCNH());
 
 
         }catch(Exception e){
+
 
         }
     }

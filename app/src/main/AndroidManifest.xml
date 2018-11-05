@@ -20,7 +20,8 @@
             android:name=".view.navigation"
             android:label="@string/title_activity_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.Login"></activity>
+        <activity android:name=".view.Login" />
+        <activity android:name=".view.NovaConta"></activity>
     </application>
 
 </manifest>
