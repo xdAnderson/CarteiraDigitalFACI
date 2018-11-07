@@ -36,24 +36,29 @@ public class NovaConta extends AppCompatActivity {
 
 
                     UsuarioController usuarioController = new UsuarioController(getBaseContext());
-                    Usuario usu = new Usuario();
-                    usu.setUSER_nome(etNomeComp.getText().toString());
-                    usu.setUSER_email(etEmail.getText().toString());
-                    usu.setUSER_senha(Criptografia.criptografar(etSenha.getText().toString()));
-                    usu.setUSER_status("1");
-                    criou = usuarioController.salvarUsuario(usu);
 
-                    if(criou){
-                        usuarioController.buscarPeloEmail(usu.getUSER_email());
-                        Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(NovaConta.this, navigation.class);
-                        startActivity(i);
-                        Usuario.BV=1;
-                        finish();
+                    if(usuarioController.possuiConta(etEmail.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Você já possui uma conta ativa, tente logar!",Toast.LENGTH_LONG).show();
+                    }else {
+                        Usuario usu = new Usuario();
+                        usu.setUSER_nome(etNomeComp.getText().toString());
+                        usu.setUSER_email(etEmail.getText().toString());
+                        usu.setUSER_senha(Criptografia.criptografar(etSenha.getText().toString()));
+                        usu.setUSER_status("1");
+                        criou = usuarioController.salvarUsuario(usu);
 
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Erro ao criar usuário.", Toast.LENGTH_SHORT).show();
-                    }
+                        if (criou) {
+                            usuarioController.buscarPeloEmail(usu.getUSER_email());
+                            Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(NovaConta.this, navigation.class);
+                            startActivity(i);
+                            Usuario.BV = 1;
+                            finish();
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Erro ao criar usuário.", Toast.LENGTH_SHORT).show();
+                        }
+                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "As senhas não coincidem, digite novamente.", Toast.LENGTH_SHORT).show();
                     etSenha.setText("");
@@ -72,5 +77,10 @@ public class NovaConta extends AppCompatActivity {
         etConfSenha.setTypeface(font);
 
 
+    }
+    public void onBackPressed() {
+        Intent i = new Intent(NovaConta.this, Login.class);
+        startActivity(i);
+        finish();
     }
 }

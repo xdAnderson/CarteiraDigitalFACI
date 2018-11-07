@@ -31,6 +31,7 @@ public class DataSource extends SQLiteOpenHelper {
             db.execSQL(DocumentoDataModel.criarTabelaTitulo());
             db.execSQL(DocumentoDataModel.criarTabelaOutros());
             db.execSQL(DocumentoDataModel.criarTabelaCNH());
+            db.execSQL(DocumentoDataModel.criarTabelaCTPS());
 
 
         } catch (Exception e) {

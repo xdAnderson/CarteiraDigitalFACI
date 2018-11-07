@@ -47,8 +47,8 @@ public class DocumentoDataModel {
                 "  'rg_orgao_uf_cnh' VARCHAR(10) NULL,\n" +
                 "  'cpf_cnh' VARCHAR(13) NULL,\n" +
                 "  'dn_cnh' DATE NULL,\n" +
-                "  'filiacao_mae_rg' VARCHAR(50) NULL,\n" +
-                "  'filiacao_pai_rg' VARCHAR(50) NULL,\n" +
+                "  'filiacao_mae_cnh' VARCHAR(50) NULL,\n" +
+                "  'filiacao_pai_cnh' VARCHAR(50) NULL,\n" +
                 "  'permissao_cnh' VARCHAR(30) NULL,\n" +
                 "  'acc_cnh' VARCHAR(10) NULL,\n" +
                 "  'categoria_cnh' VARCHAR(10) NULL,\n" +
@@ -124,7 +124,6 @@ public class DocumentoDataModel {
                 "  'dn_rg' DATE NULL,\n" +
                 "  'doc_origem_rg' VARCHAR(100) NOT NULL,\n" +
                 "  'cpf_rg' VARCHAR(12) NOT NULL,\n" +
-                "  'foto_rg' BLOB NOT NULL,\n" +
                 "  PRIMARY KEY ('numero_rg_rg'),\n" +
                 "    FOREIGN KEY ('id_usuario')\n" +
                 "    REFERENCES 'usuario' ('id_usuario'));\n";
@@ -142,6 +141,36 @@ public class DocumentoDataModel {
                 "  'munic_uf_titulo' VARCHAR(30) NULL,\n" +
                 "  'data_emissao_titulo' DATE NULL,\n" +
                 "  PRIMARY KEY ('num_insc_dv_titulo'),\n" +
+                "    FOREIGN KEY ('id_usuario')\n" +
+                "    REFERENCES 'usuario' ('id_usuario'));\n";
+        return qr;
+    }
+
+    public static String criarTabelaCTPS(){
+        String qr;
+        qr = "CREATE TABLE IF NOT EXISTS 'ctps' (\n" +
+                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
+                "  'pis_pasep_ctps' VARCHAR(12) NULL,\n" +
+                "  'numero_ctps' VARCHAR(15) NULL,\n" +
+                "  'serie_ctps' VARCHAR(15) NULL,\n" +
+                "  'uf_ctps' VARCHAR(2) NULL,\n" +
+                "  'nome_ctps' VARCHAR(50) NULL,\n" +
+                "  'loc_nasc_ctps' VARCHAR(30) NULL,\n" +
+                "  'dn_ctps' DATE NULL,\n" +
+                "  'sexo_ctps' VARCHAR(15) NULL,\n" +
+                "  'filiacao_mae_ctps' VARCHAR(50) NULL,\n" +
+                "  'filiacao_pai_ctps' VARCHAR(50) NULL,\n" +
+                "  'doc_apresentado_ctps' VARCHAR(30) NULL,\n" +
+                "  'est_civil_ctps' VARCHAR(10) NULL,\n" +
+                "  'cnh_ctps' VARCHAR(20) NULL,\n" +
+                "  'rg_ctps' VARCHAR(15) NULL,\n" +
+                "  'titulo_ctps' VARCHAR(15) NULL,\n" +
+                "  'tit_secao_ctps' VARCHAR(8) NULL,\n" +
+                "  'tit_zona_ctps' VARCHAR(5) NULL,\n" +
+                "  'cpf_ctps' VARCHAR(12) NULL,\n" +
+                "  'local_emissao_ctps' VARCHAR(25) NULL,\n" +
+                "  'data_emissao_ctps' DATE NULL,\n" +
+                "  PRIMARY KEY ('numero_ctps'),\n" +
                 "    FOREIGN KEY ('id_usuario')\n" +
                 "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;

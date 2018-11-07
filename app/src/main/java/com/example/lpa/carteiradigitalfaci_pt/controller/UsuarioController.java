@@ -1,22 +1,17 @@
 package com.example.lpa.carteiradigitalfaci_pt.controller;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.lpa.carteiradigitalfaci_pt.datasource.DataSource;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
 public class UsuarioController extends DataSource {
-
     public UsuarioController(Context context) {
         super(context);
     }
 
-
     public boolean salvarUsuario(Usuario usu){
-
         ContentValues dados = new ContentValues();
         dados.put("nome_usuario", usu.getUSER_nome());
         dados.put("email_usuario", usu.getUSER_email());
@@ -30,6 +25,7 @@ public class UsuarioController extends DataSource {
         db.close();
         return sucesso;
     }
+
     public boolean existeUsu(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from usuario WHERE ult_usuario = \"1\"", null);
@@ -86,9 +82,23 @@ public class UsuarioController extends DataSource {
             return false;
     }
 
-    public String buscarPeloEmail(String Email, String Senha){
+    public boolean possuiConta(String email){
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM usuario WHERE email_usuario = \""+Email+"\"";
+        String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
+        Cursor cursor = db.rawQuery(sql,null);
+
+        if(cursor.moveToFirst()){
+            db.close();
+            return true;
+        }else {
+            db.close();
+            return false;
+        }
+    }
+
+    public String buscarPeloEmail(String email, String Senha){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
         Cursor cursor = db.rawQuery(sql,null);
 
         if(cursor.moveToFirst()){
@@ -100,7 +110,7 @@ public class UsuarioController extends DataSource {
             if(Criptografia.criptografar(Senha).equals(senha)){
                 Usuario.USUARIO_ATIVO.setUSER_id(id);
                 Usuario.USUARIO_ATIVO.setUSER_nome(nome);
-                Usuario.USUARIO_ATIVO.setUSER_email(Email);
+                Usuario.USUARIO_ATIVO.setUSER_email(email);
                 Usuario.USUARIO_ATIVO.setUSER_senha(senha);
                 Usuario.USUARIO_ATIVO.setUSER_status(status);
                 ultimoUsuario();
@@ -108,12 +118,9 @@ public class UsuarioController extends DataSource {
             }else{
                 return "Senha incorreta, tente novamente.";
             }
-
         }else{
             return "Usuario não encontrado.";
         }
-
-
     }
 
     public boolean ativo(){
@@ -127,9 +134,6 @@ public class UsuarioController extends DataSource {
             db.close();
             return true;
         }
-
-
-
     }
 
     public boolean inativarUsuario(){
@@ -142,7 +146,6 @@ public class UsuarioController extends DataSource {
         }else{
             return true;
         }
-
     }
 
     public boolean atualizarUsuario(){
@@ -162,4 +165,3 @@ public class UsuarioController extends DataSource {
         return isUpdate;
     }
 }
-

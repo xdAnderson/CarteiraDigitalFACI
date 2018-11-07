@@ -40,7 +40,6 @@ public class Login extends AppCompatActivity {
         btlogar.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-
                    UsuarioController usuarioController = new UsuarioController(getBaseContext());
                    String validacao =  usuarioController.buscarPeloEmail(etEmail.getText().toString(),etSenha.getText().toString());
                    Toast.makeText(getApplicationContext(), validacao, Toast.LENGTH_SHORT).show();
