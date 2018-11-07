@@ -118,7 +118,7 @@ public class UsuarioController extends DataSource {
 
     public boolean ativo(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select status_usuario from usuario where email_usuario='"+Usuario.USUARIO_ATIVO.getUSER_email().toString()+"';",null);
+        Cursor cursor = db.rawQuery("select status_usuario from usuario where email_usuario='"+Usuario.USUARIO_ATIVO.getUSER_email()+"';",null);
         cursor.moveToFirst();
         if(cursor.getString(cursor.getColumnIndex("status_usuario")).equals("0")){
             db.close();
@@ -134,7 +134,7 @@ public class UsuarioController extends DataSource {
 
     public boolean inativarUsuario(){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("update usuario set status_usuario='0' where id_usuario="+Usuario.USUARIO_ATIVO.getUSER_id()+";");
+        db.execSQL("update usuario set status_usuario=\"0\" where id_usuario="+Usuario.USUARIO_ATIVO.getUSER_email()+";");
         db.close();
 
         if(ativo()){
@@ -145,20 +145,21 @@ public class UsuarioController extends DataSource {
 
     }
 
-//    public boolean atualizarUsuario(){
-//        ContentValues values = new ContentValues();
-//        values.put("nome_usuario", produto.getID());
-//        values.put("email_usuario", produto.getNome());
-//        values.put("senha_usuario", produto.getQuant());
-//
-//        String where = "id = ?";
-//        String[] whereArgs = { produtoID };
-//
-//        SQLiteDatabase db = getWritableDatabase();
-//
-//        boolean isUpdate = db.update("produto", values, where, whereArgs)>0;
-//        db.close();
-//        return isUpdate;
-//    }
+    public boolean atualizarUsuario(){
+        ContentValues values = new ContentValues();
+        values.put("nome_usuario", Usuario.USUARIO_ATIVO.getUSER_nome());
+        values.put("email_usuario", Usuario.USUARIO_ATIVO.getUSER_email());
+        values.put("senha_usuario", Usuario.USUARIO_ATIVO.getUSER_senha());
+        values.put("status_usuario", Usuario.USUARIO_ATIVO.getUSER_status());
+
+        String where = "id_email = ?";
+        String[] whereArgs = { Usuario.USUARIO_ATIVO.getUSER_email() };
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        boolean isUpdate = db.update("produto", values, where, whereArgs)>0;
+        db.close();
+        return isUpdate;
+    }
 }
 

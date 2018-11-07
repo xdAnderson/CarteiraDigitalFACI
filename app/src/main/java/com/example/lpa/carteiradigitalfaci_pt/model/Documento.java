@@ -2,6 +2,7 @@ package com.example.lpa.carteiradigitalfaci_pt.model;
 
 public class Documento {
 
+
     //Tipo Documento Obrigatório
     private int idobrigatorio;
     private String RESERVISTO_numcsmres;
@@ -73,6 +74,7 @@ public class Documento {
     private String CTPS_seriectps;
     private String CTPS_nomectps;
 
+    static Documento DOCUMENTO_ATIVO = new Documento();
 
     public int getIdobrigatorio() {
         return idobrigatorio;
