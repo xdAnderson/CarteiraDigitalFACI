@@ -9,6 +9,7 @@ public class UsuarioDataModel {
                 "  'nome_usuario' VARCHAR(50) NULL,\n" +
                 "  'email_usuario' VARCHAR(50) NULL,\n" +
                 "  'senha_usuario' VARCHAR(32) NULL,\n" +
+                "  'ult_usuario' VARCHAR(1) NULL,\n" +
                 "  'status_usuario' VARCHAR(1) NULL);";
 
         return qr;

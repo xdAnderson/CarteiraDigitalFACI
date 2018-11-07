@@ -26,28 +26,32 @@ public class Login extends AppCompatActivity {
         TextView tvNovaConta = findViewById(R.id.tvNovaConta);
         TextView tvEsqueci = findViewById(R.id.tvEsqueci);
         final EditText etEmail = findViewById(R.id.etEmail);
-        EditText etSenha = findViewById(R.id.etSenha);
+        final EditText etSenha = findViewById(R.id.etSenha);
 
         tvNovaConta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Login.this, NovaConta.class);
                 startActivity(i);
+                finish();
             }
         });
 
         btlogar.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   Usuario usu = new Usuario();
-                   UsuarioController usuarioController = new UsuarioController(getBaseContext());
-                   usu = usuarioController.buscarPeloEmail(etEmail.getText().toString());
 
-                   if(usu!=null){
-                       Toast.makeText(getApplicationContext(), "Usuário encontrado com sucesso.\nNome: "+usu.getUSER_nome()+"\nEmail: "+usu.getUSER_email(), Toast.LENGTH_SHORT).show();
-                   }else{
-                       Toast.makeText(getApplicationContext(), "Usuário não encontrado...", Toast.LENGTH_SHORT).show();
+                   UsuarioController usuarioController = new UsuarioController(getBaseContext());
+                   String validacao =  usuarioController.buscarPeloEmail(etEmail.getText().toString(),etSenha.getText().toString());
+                   Toast.makeText(getApplicationContext(), validacao, Toast.LENGTH_SHORT).show();
+                   if(validacao.equals("Bem Vindo "+Usuario.USUARIO_ATIVO.getUSER_nome()+"!")){
+                       Intent i = new Intent(Login.this, navigation.class);
+                       startActivity(i);
+                       finish();
+
                    }
+
+
                }
            }
 
@@ -59,4 +63,6 @@ public class Login extends AppCompatActivity {
         etEmail.setTypeface(font);
         etSenha.setTypeface(font);
     }
+
+
 }

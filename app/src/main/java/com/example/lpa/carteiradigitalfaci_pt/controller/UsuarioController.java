@@ -15,14 +15,14 @@ public class UsuarioController extends DataSource {
     }
 
 
-    public boolean salvarUsuario(Usuario obj){
+    public boolean salvarUsuario(Usuario usu){
 
         ContentValues dados = new ContentValues();
-        //dados.put("id_usuario", "");
-        dados.put("nome_usuario", obj.getUSER_nome());
-        dados.put("email_usuario", obj.getUSER_email());
-        dados.put("senha_usuario", obj.getUSER_senha());
+        dados.put("nome_usuario", usu.getUSER_nome());
+        dados.put("email_usuario", usu.getUSER_email());
+        dados.put("senha_usuario", usu.getUSER_senha());
         dados.put("status_usuario", "1");
+        dados.put("ult_usuario", "0");
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -30,29 +30,135 @@ public class UsuarioController extends DataSource {
         db.close();
         return sucesso;
     }
+    public boolean existeUsu(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from usuario WHERE ult_usuario = \"1\"", null);
 
+        if (cursor != null) {
 
-    public Usuario buscarPeloEmail(String Email){
-        Usuario usu = new Usuario();;
+            if (!cursor.moveToFirst()) {
+                db.close();
+                return false;
+            } else {
+                db.close();
+                return buscarPeloEmail(cursor.getString(cursor.getColumnIndex("email_usuario")));
+            }
+        }
+        db.close();
+            return false;
+    }
+
+    public boolean ultimoUsuario(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE usuario set ult_usuario = \"1\" WHERE email_usuario=\""+Usuario.USUARIO_ATIVO.getUSER_email()+"\";");
+        db.close();
+        return true;
+    }
+
+    public boolean zerarUltimoUsuario(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE usuario set ult_usuario = \"0\";");
+        db.close();
+        return true;
+    }
+
+    public boolean buscarPeloEmail(String Email){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM usuario WHERE email_usuario = \""+Email+"\"";
         Cursor cursor = db.rawQuery(sql,null);
 
         if(cursor.moveToFirst()){
-            int id = cursor.getInt(cursor.getColumnIndex("nome_usuario"));
+            int id = cursor.getInt(cursor.getColumnIndex("id_usuario"));
             String nome = cursor.getString(cursor.getColumnIndex("nome_usuario"));
             String senha = cursor.getString(cursor.getColumnIndex("senha_usuario"));
             String status = cursor.getString(cursor.getColumnIndex("status_usuario"));
 
-            usu.setUSER_id(id);
-            usu.setUSER_nome(nome);
-            usu.setUSER_email(Email);
-            usu.setUSER_senha(senha);
-            usu.setUSER_status(status);
+            Usuario.USUARIO_ATIVO.setUSER_id(id);
+            Usuario.USUARIO_ATIVO.setUSER_nome(nome);
+            Usuario.USUARIO_ATIVO.setUSER_email(Email);
+            Usuario.USUARIO_ATIVO.setUSER_senha(senha);
+            Usuario.USUARIO_ATIVO.setUSER_status(status);
+            ultimoUsuario();
+            db.close();
+            return true;
         }else
-            usu = null;
-
-        db.close();
-        return usu;
+            db.close();
+            return false;
     }
+
+    public String buscarPeloEmail(String Email, String Senha){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM usuario WHERE email_usuario = \""+Email+"\"";
+        Cursor cursor = db.rawQuery(sql,null);
+
+        if(cursor.moveToFirst()){
+            int id = cursor.getInt(cursor.getColumnIndex("id_usuario"));
+            String nome = cursor.getString(cursor.getColumnIndex("nome_usuario"));
+            String senha = cursor.getString(cursor.getColumnIndex("senha_usuario"));
+            String status = cursor.getString(cursor.getColumnIndex("status_usuario"));
+
+            if(Criptografia.criptografar(Senha).equals(senha)){
+                Usuario.USUARIO_ATIVO.setUSER_id(id);
+                Usuario.USUARIO_ATIVO.setUSER_nome(nome);
+                Usuario.USUARIO_ATIVO.setUSER_email(Email);
+                Usuario.USUARIO_ATIVO.setUSER_senha(senha);
+                Usuario.USUARIO_ATIVO.setUSER_status(status);
+                ultimoUsuario();
+                return "Bem Vindo "+Usuario.USUARIO_ATIVO.getUSER_nome()+"!";
+            }else{
+                return "Senha incorreta, tente novamente.";
+            }
+
+        }else{
+            return "Usuario não encontrado.";
+        }
+
+
+    }
+
+    public boolean ativo(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select status_usuario from usuario where email_usuario='"+Usuario.USUARIO_ATIVO.getUSER_email().toString()+"';",null);
+        cursor.moveToFirst();
+        if(cursor.getString(cursor.getColumnIndex("status_usuario")).equals("0")){
+            db.close();
+            return false;
+        }else{
+            db.close();
+            return true;
+        }
+
+
+
+    }
+
+    public boolean inativarUsuario(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("update usuario set status_usuario='0' where id_usuario="+Usuario.USUARIO_ATIVO.getUSER_id()+";");
+        db.close();
+
+        if(ativo()){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+//    public boolean atualizarUsuario(){
+//        ContentValues values = new ContentValues();
+//        values.put("nome_usuario", produto.getID());
+//        values.put("email_usuario", produto.getNome());
+//        values.put("senha_usuario", produto.getQuant());
+//
+//        String where = "id = ?";
+//        String[] whereArgs = { produtoID };
+//
+//        SQLiteDatabase db = getWritableDatabase();
+//
+//        boolean isUpdate = db.update("produto", values, where, whereArgs)>0;
+//        db.close();
+//        return isUpdate;
+//    }
 }
+

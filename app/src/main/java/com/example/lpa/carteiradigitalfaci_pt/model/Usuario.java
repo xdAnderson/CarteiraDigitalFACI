@@ -9,6 +9,10 @@ public class Usuario {
     private String USER_senha;
     private String USER_status;
 
+    public static int BV=0;
+
+    public static Usuario USUARIO_ATIVO = new Usuario();
+
     public int getUSER_id() {
         return USER_id;
     }

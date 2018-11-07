@@ -21,7 +21,7 @@ public class DataSource extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        try{
+        try {
             db.execSQL(UsuarioDataModel.criarTabelaUsuario());
             db.execSQL(DocumentoDataModel.criarTabelaCertidao());
             db.execSQL(DocumentoDataModel.criarTabelaCNH());
@@ -33,7 +33,7 @@ public class DataSource extends SQLiteOpenHelper {
             db.execSQL(DocumentoDataModel.criarTabelaCNH());
 
 
-        }catch(Exception e){
+        } catch (Exception e) {
 
 
         }

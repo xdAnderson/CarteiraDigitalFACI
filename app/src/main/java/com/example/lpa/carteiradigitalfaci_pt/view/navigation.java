@@ -1,10 +1,12 @@
 package com.example.lpa.carteiradigitalfaci_pt.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,8 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.lpa.carteiradigitalfaci_pt.R;
+import com.example.lpa.carteiradigitalfaci_pt.controller.UsuarioController;
+import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
 public class navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,7 +35,7 @@ public class navigation extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Usuário "+Usuario.USUARIO_ATIVO.getUSER_nome()+" logado.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -42,6 +48,11 @@ public class navigation extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        if(Usuario.BV==1){
+            //Abrirá um fragment de boas vindas
+            Usuario.BV=0;
+        }
     }
 
     @Override
@@ -50,7 +61,18 @@ public class navigation extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(navigation.this)
+                    .setTitle("Fechar aplicação...")
+                    .setMessage("Deseja fechar a aplicação?")
+                    .setPositiveButton("Sim",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finishAffinity();
+                                }
+                            })
+                    .setNegativeButton("Não",null)
+                    .show();
         }
     }
 
@@ -70,6 +92,11 @@ public class navigation extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_sair) {
+            UsuarioController uc = new UsuarioController(getApplicationContext());
+            uc.zerarUltimoUsuario();
+            Toast.makeText(getApplicationContext(), "Efetuando Logoff", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(navigation.this, Login.class);
+            startActivity(i);
             finish();
             return true;
         }
