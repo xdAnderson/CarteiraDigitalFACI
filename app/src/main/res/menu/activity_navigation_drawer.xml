@@ -6,12 +6,40 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_main"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Meus Documentos" />
+            android:icon="@drawable/icon_menu_princ"
+            android:title="Menu Principal" />
         <item
-            android:id="@+id/nav_add"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Adicionar Documento" />
+            android:id="@+id/nav_certidao"
+            android:icon="@drawable/icon_itens"
+            android:title="  Certidão de nascimento" />
+        <item
+            android:id="@+id/nav_rg"
+            android:icon="@drawable/icon_itens"
+            android:title="  RG" />
+        <item
+            android:id="@+id/nav_cpf"
+            android:icon="@drawable/icon_itens"
+            android:title="  CPF" />
+        <item
+            android:id="@+id/nav_cnh"
+            android:icon="@drawable/icon_itens"
+            android:title="  CNH" />
+        <item
+            android:id="@+id/nav_ctps"
+            android:icon="@drawable/icon_itens"
+            android:title="  CTPS" />
+        <item
+            android:id="@+id/nav_titulo"
+            android:icon="@drawable/icon_itens"
+            android:title="  Título" />
+        <item
+            android:id="@+id/nav_reservista"
+            android:icon="@drawable/icon_itens"
+            android:title="  Reservista" />
+        <item
+            android:id="@+id/nav_outros"
+            android:icon="@drawable/icon_itens"
+            android:title="  Outros documentos" />
 
     </group>
 
@@ -21,7 +49,7 @@
 
             <item
                 android:id="@+id/nav_config"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/icon_config"
                 android:title="Configurações" />
             <item
                 android:id="@+id/nav_share"
@@ -29,11 +57,11 @@
                 android:title="Compartilhar" />
             <item
                 android:id="@+id/nav_fb"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/icon_feedb"
                 android:title="Dê sua opnião" />
             <item
                 android:id="@+id/nav_sair"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/icon_exit"
                 android:title="Sair" />
         </menu>
     </item>
