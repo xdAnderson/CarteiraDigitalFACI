@@ -1,7 +1,7 @@
 package com.example.lpa.carteiradigitalfaci_pt.view;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +14,8 @@ import com.example.lpa.carteiradigitalfaci_pt.controller.Criptografia;
 import com.example.lpa.carteiradigitalfaci_pt.controller.UsuarioController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class NovaConta extends AppCompatActivity {
 
     @Override
@@ -21,7 +23,7 @@ public class NovaConta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_conta);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/futura.ttf");
+
         final EditText etNomeComp = findViewById(R.id.etNomeComp);
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etSenha = findViewById(R.id.etSenha);
@@ -37,7 +39,7 @@ public class NovaConta extends AppCompatActivity {
 
                     UsuarioController usuarioController = new UsuarioController(getBaseContext());
 
-                    if(usuarioController.possuiConta(etEmail.getText().toString())){
+                    if(usuarioController.verificarSePossuiConta(etEmail.getText().toString())){
                         Toast.makeText(getApplicationContext(), "Você já possui uma conta ativa, tente logar!",Toast.LENGTH_LONG).show();
                     }else {
                         Usuario usu = new Usuario();
@@ -65,19 +67,15 @@ public class NovaConta extends AppCompatActivity {
                     etConfSenha.setText("");
                     etSenha.requestFocus();
                 }
-
-
-
             }
         });
-
-        etNomeComp.setTypeface(font);
-        etEmail.setTypeface(font);
-        etSenha.setTypeface(font);
-        etConfSenha.setTypeface(font);
-
-
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     public void onBackPressed() {
         Intent i = new Intent(NovaConta.this, Login.class);
         startActivity(i);

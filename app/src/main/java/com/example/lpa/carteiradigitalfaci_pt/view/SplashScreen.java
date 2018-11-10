@@ -17,7 +17,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         UsuarioController usuarioController = new UsuarioController(getApplicationContext());
         DataSource ds = new DataSource(getBaseContext());
-        if(usuarioController.existeUsu()){
+        if(usuarioController.verificarSeExisteUsuarioLogado()){
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

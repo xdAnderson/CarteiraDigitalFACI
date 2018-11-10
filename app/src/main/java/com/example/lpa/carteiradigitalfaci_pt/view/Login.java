@@ -1,7 +1,7 @@
 package com.example.lpa.carteiradigitalfaci_pt.view;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +14,8 @@ import com.example.lpa.carteiradigitalfaci_pt.R;
 import com.example.lpa.carteiradigitalfaci_pt.controller.UsuarioController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class Login extends AppCompatActivity {
 
     @Override
@@ -21,7 +23,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/futura.ttf");
+
         Button btlogar = findViewById(R.id.bt_entrar);
         TextView tvNovaConta = findViewById(R.id.tvNovaConta);
         TextView tvEsqueci = findViewById(R.id.tvEsqueci);
@@ -55,13 +57,11 @@ public class Login extends AppCompatActivity {
            }
 
         );
-
-
-        tvEsqueci.setTypeface(font);
-        tvNovaConta.setTypeface(font);
-        etEmail.setTypeface(font);
-        etSenha.setTypeface(font);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
 }

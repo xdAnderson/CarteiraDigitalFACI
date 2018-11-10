@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,18 +37,20 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class navigation extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    FragmentManager fragmentManager;
+    public static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_navigation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_add);
 
+
+        fab.setAlpha(0.5f);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,16 +59,18 @@ public class navigation extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentMenuPrincipal()).commit();
+
+        replaceFragmentWithAnimation(new FragmentMenuPrincipal(), "fgMP", "Carteira Digital");
 
         if(Usuario.BV==1){
             //Abrirá um fragment de boas vindas
@@ -74,6 +79,16 @@ public class navigation extends AppCompatActivity
 
 
     }
+    public static void replaceFragmentWithAnimation(Fragment fragment, String tag){
+        fragmentManager.beginTransaction().setCustomAnimations(R.anim.res_anim_fadein, R.anim.res_anim_fadeout).replace(R.id.content_fragment, fragment).commit();
+
+
+    }
+    public void replaceFragmentWithAnimation(Fragment fragment, String tag, String titulo){
+        fragmentManager.beginTransaction().setCustomAnimations(R.anim.res_anim_fadein, R.anim.res_anim_fadeout).replace(R.id.content_fragment, fragment).commit();
+        setTitle(titulo);
+    }
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -83,25 +98,29 @@ public class navigation extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        Fragment nomeFragment = fragmentManager.findFragmentByTag("fgMP");
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if (nomeFragment != null && nomeFragment.isVisible()) {
+                new AlertDialog.Builder(navigation.this)
+                        .setTitle("Fechar aplicação...")
+                        .setMessage("Deseja fechar a aplicação?")
+                        .setPositiveButton("Sim",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        finishAffinity();
+                                    }
+                                })
+                        .setNegativeButton("Não",null)
+                        .show();
 
-            setTitle("Carteira Digital");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentMenuPrincipal()).commit();
-
-            new AlertDialog.Builder(navigation.this)
-                    .setTitle("Fechar aplicação...")
-                    .setMessage("Deseja fechar a aplicação?")
-                    .setPositiveButton("Sim",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    finishAffinity();
-                                }
-                            })
-                    .setNegativeButton("Não",null)
-                    .show();
+            }else{
+                replaceFragmentWithAnimation(new FragmentMenuPrincipal(), "fgMP", "Carteira Digital");
+            }
         }
     }
 
@@ -133,32 +152,23 @@ public class navigation extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_main) {
-            setTitle("Carteira Digital");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentMenuPrincipal()).commit();
+            replaceFragmentWithAnimation(new FragmentMenuPrincipal(), "fgMP", "Carteira Digital");
         } else if (id == R.id.nav_certidao) {
-            setTitle("Certidão");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentCertidao()).commit();
+            replaceFragmentWithAnimation(new FragmentCertidao(), "fgCert", "Certidão de Nascimento");
         } else if (id == R.id.nav_rg) {
-            setTitle("Registro Geral (RG)");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentRG()).commit();
+            replaceFragmentWithAnimation(new FragmentRG(), "fgRG", "Registro Geral (RG)");
         } else if (id == R.id.nav_cpf) {
-            setTitle("Comp. Pessoa Física (CPF)");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentCPF()).commit();
+            replaceFragmentWithAnimation(new FragmentCPF(), "fgCPF", "Cad. Pessoa Física (CPF)");
         } else if (id == R.id.nav_cnh) {
-            setTitle("Cart. Nac. de Habilitação");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentCNH()).commit();
+            replaceFragmentWithAnimation(new FragmentCNH(), "fgCNH", "Cart. Nac. de Habilitação");
         } else if (id == R.id.nav_ctps) {
-            setTitle("Cart. Trab. e Previdência Social");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentCTPS()).commit();
+            replaceFragmentWithAnimation(new FragmentCTPS(), "fgCTPS", "Cart. Trab. e Previdência Social");
         } else if (id == R.id.nav_titulo) {
-            setTitle("Título de Eleitor");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentTitulo()).commit();
+            replaceFragmentWithAnimation(new FragmentTitulo(), "fgfgTit", "Título de Eleitor");
         } else if (id == R.id.nav_reservista) {
-            setTitle("Reservista");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentReservista()).commit();
+            replaceFragmentWithAnimation(new FragmentReservista(), "fgReser", "Reservista");
         } else if (id == R.id.nav_outros) {
-            setTitle("Outros Documentos");
-            fragmentManager.beginTransaction().replace(R.id.content_fragment, new FragmentOutros()).commit();
+            replaceFragmentWithAnimation(new FragmentOutros(), "fgOut", "Outros Documentos");
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(navigation.this, ConfigActivity.class));
         } else if (id == R.id.nav_share) {

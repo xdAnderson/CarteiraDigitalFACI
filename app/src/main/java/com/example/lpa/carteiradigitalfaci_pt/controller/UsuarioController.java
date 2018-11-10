@@ -26,7 +26,7 @@ public class UsuarioController extends DataSource {
         return sucesso;
     }
 
-    public boolean existeUsu(){
+    public boolean verificarSeExisteUsuarioLogado(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from usuario WHERE ult_usuario = \"1\"", null);
 
@@ -44,7 +44,7 @@ public class UsuarioController extends DataSource {
             return false;
     }
 
-    public boolean ultimoUsuario(){
+    public boolean definirComoUltimoUsuarioLogado(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE usuario set ult_usuario = \"1\" WHERE email_usuario=\""+Usuario.USUARIO_ATIVO.getUSER_email()+"\";");
         db.close();
@@ -74,26 +74,12 @@ public class UsuarioController extends DataSource {
             Usuario.USUARIO_ATIVO.setUSER_email(Email);
             Usuario.USUARIO_ATIVO.setUSER_senha(senha);
             Usuario.USUARIO_ATIVO.setUSER_status(status);
-            ultimoUsuario();
+            definirComoUltimoUsuarioLogado();
             db.close();
             return true;
         }else
             db.close();
             return false;
-    }
-
-    public boolean possuiConta(String email){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
-        Cursor cursor = db.rawQuery(sql,null);
-
-        if(cursor.moveToFirst()){
-            db.close();
-            return true;
-        }else {
-            db.close();
-            return false;
-        }
     }
 
     public String buscarPeloEmail(String email, String Senha){
@@ -113,7 +99,7 @@ public class UsuarioController extends DataSource {
                 Usuario.USUARIO_ATIVO.setUSER_email(email);
                 Usuario.USUARIO_ATIVO.setUSER_senha(senha);
                 Usuario.USUARIO_ATIVO.setUSER_status(status);
-                ultimoUsuario();
+                definirComoUltimoUsuarioLogado();
                 return "Bem Vindo "+Usuario.USUARIO_ATIVO.getUSER_nome()+"!";
             }else{
                 return "Senha incorreta, tente novamente.";
@@ -122,8 +108,21 @@ public class UsuarioController extends DataSource {
             return "Usuario não encontrado.";
         }
     }
+    public boolean verificarSePossuiConta(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
+        Cursor cursor = db.rawQuery(sql,null);
 
-    public boolean ativo(){
+        if(cursor.moveToFirst()){
+            db.close();
+            return true;
+        }else {
+            db.close();
+            return false;
+        }
+    }
+
+    public boolean verificarSeAtivo(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select status_usuario from usuario where email_usuario='"+Usuario.USUARIO_ATIVO.getUSER_email()+"';",null);
         cursor.moveToFirst();
@@ -141,14 +140,14 @@ public class UsuarioController extends DataSource {
         db.execSQL("update usuario set status_usuario=\"0\" where id_usuario="+Usuario.USUARIO_ATIVO.getUSER_email()+";");
         db.close();
 
-        if(ativo()){
+        if(verificarSeAtivo()){
             return false;
         }else{
             return true;
         }
     }
 
-    public boolean atualizarUsuario(){
+    public boolean atualizarDadosUsuario(){
         ContentValues values = new ContentValues();
         values.put("nome_usuario", Usuario.USUARIO_ATIVO.getUSER_nome());
         values.put("email_usuario", Usuario.USUARIO_ATIVO.getUSER_email());
