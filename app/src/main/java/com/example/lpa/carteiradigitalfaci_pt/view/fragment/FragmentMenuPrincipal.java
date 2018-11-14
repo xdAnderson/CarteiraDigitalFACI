@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lpa.carteiradigitalfaci_pt.R;
+import com.example.lpa.carteiradigitalfaci_pt.controller.DocumentoController;
+import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 import com.example.lpa.carteiradigitalfaci_pt.view.navigation;
 
 
@@ -61,11 +63,12 @@ public class FragmentMenuPrincipal extends Fragment {
         btReservista = view.findViewById(R.id.btReservista);
         btOutros = view.findViewById(R.id.btOutros);
 
-
+        final DocumentoController documentoController = new DocumentoController(getContext());
 
         btCertidao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 navigation.replaceFragmentWithAnimation(new FragmentCertidao(), "fgCert");
                 getActivity().setTitle("Certidão de Nascimento");
             }
@@ -80,7 +83,10 @@ public class FragmentMenuPrincipal extends Fragment {
         btCPF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentCPF(), "fgCPF");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"cpf")){
+                    navigation.replaceFragmentWithAnimation(new FragmentCPF(), "fgCPF");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentCPFCad(), "fgCPF");
                 getActivity().setTitle("Cad. Pessoa Física (CPF)");
             }
         });

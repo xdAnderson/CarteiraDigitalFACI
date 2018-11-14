@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -46,6 +47,7 @@ public class navigation extends AppCompatActivity
         setContentView(R.layout.activity_navigation);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_add);
 
@@ -85,7 +87,7 @@ public class navigation extends AppCompatActivity
 
     }
     public void replaceFragmentWithAnimation(Fragment fragment, String tag, String titulo){
-        fragmentManager.beginTransaction().setCustomAnimations(R.anim.res_anim_fadein, R.anim.res_anim_fadeout).replace(R.id.content_fragment, fragment).commit();
+        fragmentManager.beginTransaction().setCustomAnimations(R.anim.res_anim_fadein, R.anim.res_anim_fadeout).replace(R.id.content_fragment, fragment, tag).commit();
         setTitle(titulo);
     }
 
@@ -97,7 +99,7 @@ public class navigation extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         Fragment nomeFragment = fragmentManager.findFragmentByTag("fgMP");
 
@@ -184,7 +186,7 @@ public class navigation extends AppCompatActivity
             finish();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -56,6 +56,7 @@ public class DocumentoDataModel {
                 "  'primeira_cnh_cnh' DATE NULL,\n" +
                 "  'local_cnh' VARCHAR(30) NULL,\n" +
                 "  'data_emissao_cnh' DATE NULL,\n" +
+                "  'observacao_cnh' DATE NULL,\n" +
                 "  PRIMARY KEY ('numero_reg_cnh_cnh'),\n" +
                 "    FOREIGN KEY ('id_usuario')\n" +
                 "    REFERENCES 'usuario' ('id_usuario'));\n";
@@ -67,7 +68,6 @@ public class DocumentoDataModel {
                 "  'id_usuario' INTEGER(255) NOT NULL,\n" +
                 "  'numero_cpf' VARCHAR(12) NOT NULL,\n" +
                 "  'nome_cpf' VARCHAR(50) NULL,\n" +
-                "  'nome_social_cpf' VARCHAR(50) NULL,\n" +
                 "  'dn_cpf' DATE NULL,\n" +
                 "  PRIMARY KEY ('numero_cpf'),\n"+
                 "    FOREIGN KEY ('id_usuario')\n" +

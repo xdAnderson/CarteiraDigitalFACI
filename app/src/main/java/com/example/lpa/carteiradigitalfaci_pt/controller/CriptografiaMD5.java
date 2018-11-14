@@ -3,7 +3,7 @@ package com.example.lpa.carteiradigitalfaci_pt.controller;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Criptografia {
+public class CriptografiaMD5 {
 
     private static MessageDigest md = null;
 

@@ -20,7 +20,8 @@
         <activity
             android:name=".view.navigation"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".view.Login" />
         <activity android:name=".view.NovaConta" />
         <activity android:name=".view.ConfigActivity"></activity>

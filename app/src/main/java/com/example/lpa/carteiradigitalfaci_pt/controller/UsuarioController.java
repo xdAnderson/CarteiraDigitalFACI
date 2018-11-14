@@ -1,8 +1,10 @@
 package com.example.lpa.carteiradigitalfaci_pt.controller;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.example.lpa.carteiradigitalfaci_pt.datasource.DataSource;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
@@ -53,7 +55,7 @@ public class UsuarioController extends DataSource {
 
     public boolean zerarUltimoUsuario(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE usuario set ult_usuario = \"0\";");
+        db.execSQL(" UPDATE usuario set ult_usuario = \"0\", pin = \"0\"; ");
         db.close();
         return true;
     }
@@ -82,7 +84,7 @@ public class UsuarioController extends DataSource {
             return false;
     }
 
-    public String buscarPeloEmail(String email, String Senha){
+    public String logar(String email, String Senha){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
         Cursor cursor = db.rawQuery(sql,null);
@@ -93,7 +95,7 @@ public class UsuarioController extends DataSource {
             String senha = cursor.getString(cursor.getColumnIndex("senha_usuario"));
             String status = cursor.getString(cursor.getColumnIndex("status_usuario"));
 
-            if(Criptografia.criptografar(Senha).equals(senha)){
+            if(CriptografiaMD5.criptografar(Senha).equals(senha)){
                 Usuario.USUARIO_ATIVO.setUSER_id(id);
                 Usuario.USUARIO_ATIVO.setUSER_nome(nome);
                 Usuario.USUARIO_ATIVO.setUSER_email(email);
@@ -108,6 +110,25 @@ public class UsuarioController extends DataSource {
             return "Usuario não encontrado.";
         }
     }
+    public boolean verificarSePossuiPIN(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor  = db.rawQuery("SELECT pin FROM usuario WHERE id_usuario = "+Usuario.USUARIO_ATIVO.getUSER_id()+" AND pin <> \"0\"", null);
+        if(cursor.moveToFirst()){
+            db.close();
+            return true;
+        }else
+        return false;
+    }
+    public boolean inserirPIN(String pin){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        CriptografiaBase64 cb64 = new CriptografiaBase64();
+        cv.put("pin", cb64.encrypt(pin,pin));
+        String[] whereArgs= {Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id())};
+        boolean inseriu = db.update("usuario",cv,"id_usuario = ?",whereArgs)>0;
+        return inseriu;
+    }
+
     public boolean verificarSePossuiConta(String email){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
