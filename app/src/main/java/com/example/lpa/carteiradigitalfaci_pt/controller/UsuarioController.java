@@ -102,6 +102,7 @@ public class UsuarioController extends DataSource {
                 Usuario.USUARIO_ATIVO.setUSER_senha(senha);
                 Usuario.USUARIO_ATIVO.setUSER_status(status);
                 definirComoUltimoUsuarioLogado();
+
                 return "Bem Vindo "+Usuario.USUARIO_ATIVO.getUSER_nome()+"!";
             }else{
                 return "Senha incorreta, tente novamente.";
@@ -110,22 +111,35 @@ public class UsuarioController extends DataSource {
             return "Usuario não encontrado.";
         }
     }
-    public boolean verificarSePossuiPIN(){
+    public boolean recuperarPIN(String pin){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor  = db.rawQuery("SELECT pin FROM usuario WHERE id_usuario = "+Usuario.USUARIO_ATIVO.getUSER_id()+" AND pin <> \"0\"", null);
         if(cursor.moveToFirst()){
+            CriptografiaBase64 cpb64 = new CriptografiaBase64();
+            if(cursor.getString(cursor.getColumnIndex("pin")).equals(cpb64.encrypt(pin,pin))) {
+                Usuario.setUserPin(cpb64.decrypt(pin, cursor.getString(cursor.getColumnIndex("pin"))));
+                db.close();
+                return true;
+            }else{
+                db.close();
+                return false;
+            }
+        }else{
             db.close();
-            return true;
-        }else
-        return false;
+            return false;
+        }
+
     }
-    public boolean inserirPIN(String pin){
+    public boolean inserirPIN(String pin, String email){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         CriptografiaBase64 cb64 = new CriptografiaBase64();
-        cv.put("pin", cb64.encrypt(pin,pin));
-        String[] whereArgs= {Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id())};
-        boolean inseriu = db.update("usuario",cv,"id_usuario = ?",whereArgs)>0;
+        String pinb64 = cb64.encrypt(pin,pin);
+        System.out.print("----------------AQUIIIII---->>> "+pinb64);
+        cv.put("pin", pinb64);
+        Usuario.setUserPin(pin);
+        String[] whereArgs= {email};
+        boolean inseriu = db.update("usuario",cv,"email_usuario = ?",whereArgs)>0;
         return inseriu;
     }
 

@@ -12,10 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lpa.carteiradigitalfaci_pt.R;
-import com.example.lpa.carteiradigitalfaci_pt.controller.CriptografiaBase64;
 import com.example.lpa.carteiradigitalfaci_pt.controller.DocumentoController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Documentos.CPF;
-import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 import com.example.lpa.carteiradigitalfaci_pt.view.navigation;
 
 
@@ -40,16 +38,12 @@ public class FragmentCPF extends Fragment {
         TextView tvDNCPF = view.findViewById(R.id.tvDNCPF);
         Button btEditarCPF = view.findViewById(R.id.btEditarCPF);
         Button btExcluirCPF = view.findViewById(R.id.btExcluirCPF);
-        CriptografiaBase64 criptografiaBase64 = new CriptografiaBase64();
-
-
-
 
         final DocumentoController documentoController = new DocumentoController(getContext());
         CPF objCPF = documentoController.buscarCPF();
-        tvNumCPF.setText(criptografiaBase64.decrypt(Usuario.USUARIO_ATIVO.getUSER_senha(), objCPF.getCPF_numero()));
-        tvNomeCPF.setText(criptografiaBase64.decrypt(Usuario.USUARIO_ATIVO.getUSER_senha(), objCPF.getCPF_nome()));
-        tvDNCPF.setText(criptografiaBase64.decrypt(Usuario.USUARIO_ATIVO.getUSER_senha(),objCPF.getCPF_dn()));
+        tvNumCPF.setText(objCPF.getCPF_numero());
+        tvNomeCPF.setText(objCPF.getCPF_nome());
+        tvDNCPF.setText(objCPF.getCPF_dn());
 
         btEditarCPF.setOnClickListener(new View.OnClickListener() {
             @Override

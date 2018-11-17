@@ -17,13 +17,14 @@ public class DocumentoController extends DataSource {
 
     public CPF buscarCPF(){
         SQLiteDatabase db = this.getReadableDatabase();
+        CriptografiaBase64 cpb64 = new CriptografiaBase64();
         String sql = "SELECT * FROM cpf WHERE id_usuario = \""+Usuario.USUARIO_ATIVO.getUSER_id()+"\"";
         Cursor cursor = db.rawQuery(sql,null);
         CPF objCPF = new CPF();
         cursor.moveToFirst();
-        objCPF.setCPF_numero(cursor.getString(cursor.getColumnIndex("numero_cpf")));
-        objCPF.setCPF_nome(cursor.getString(cursor.getColumnIndex("nome_cpf")));
-        objCPF.setCPF_dn(cursor.getString(cursor.getColumnIndex("dn_cpf")));
+        objCPF.setCPF_numero(cpb64.decrypt(Usuario.getUserPin(), cursor.getString(cursor.getColumnIndex("numero_cpf"))));
+        objCPF.setCPF_nome(cpb64.decrypt(Usuario.getUserPin(), cursor.getString(cursor.getColumnIndex("nome_cpf"))));
+        objCPF.setCPF_dn(cpb64.decrypt(Usuario.getUserPin(), cursor.getString(cursor.getColumnIndex("dn_cpf"))));
 
         return objCPF;
     }

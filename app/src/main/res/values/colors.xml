@@ -3,4 +3,5 @@
     <color name="colorPrimary">#1e8e79</color>
     <color name="colorPrimaryDark">#1e8f79</color>
     <color name="colorAccent">#176e5e</color>
+    <color name="transparentPIN">#b4585858</color>
 </resources>

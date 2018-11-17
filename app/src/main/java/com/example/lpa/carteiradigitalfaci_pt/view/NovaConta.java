@@ -39,7 +39,7 @@ public class NovaConta extends AppCompatActivity {
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean criou;
+
                 if(etSenha.getText().toString().equals(etConfSenha.getText().toString())){
 
 
@@ -48,50 +48,54 @@ public class NovaConta extends AppCompatActivity {
                     if(usuarioController.verificarSePossuiConta(etEmail.getText().toString())){
                         Toast.makeText(getApplicationContext(), "Você já possui uma conta ativa, tente logar!",Toast.LENGTH_LONG).show();
                     }else {
-                        Usuario usu = new Usuario();
+                        final Usuario usu = new Usuario();
                         usu.setUSER_nome(etNomeComp.getText().toString());
                         usu.setUSER_email(etEmail.getText().toString());
                         usu.setUSER_senha(CriptografiaMD5.criptografar(etSenha.getText().toString()));
                         usu.setUSER_status("1");
-                        criou = usuarioController.salvarUsuario(usu);
+                        AlertDialog.Builder mensagem = new AlertDialog.Builder(NovaConta.this);
+                        mensagem.setCancelable(false);
+                        mensagem.setTitle("PIN DE ACESSO");
+                        mensagem.setMessage("Para manter seus dados seguros e ainda assim com fácil acesso por você, informe um pin de 4 números:");
+                        // DECLARACAO DO EDITTEXT
+                        final EditText input = new EditText(getBaseContext());
+                        input.setTextColor(Color.BLACK);
+                        input.setTextSize(30);
+                        input.setWidth(100);
+                        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        input.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        mensagem.setView(input);
+                        mensagem.setNeutralButton("Registrar PIN", new DialogInterface.OnClickListener() {
 
-                        if (criou) {
-                            usuarioController.buscarPeloEmail(usu.getUSER_email());
-                            Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
-                            AlertDialog.Builder mensagem = new AlertDialog.Builder(NovaConta.this);
-                            mensagem.setTitle("PIN DE ACESSO");
-                            mensagem.setMessage("Para manter seus dados seguros e ainda assim com fácil acesso por você, informe um pin de 4 números:");
-                            // DECLARACAO DO EDITTEXT
-                            final EditText input = new EditText(getBaseContext());
-                            input.setTextColor(Color.BLACK);
-                            input.setTextSize(30);
-                            input.setRawInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD);
-                            input.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                            mensagem.setView(input);
-                            mensagem.setNeutralButton("Registrar PIN", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                        String tamPIN = input.getText().toString();
+                                if(tamPIN.length()==4) {
+                                    if(usuarioController.salvarUsuario(usu)){
+                                        if(usuarioController.inserirPIN(input.getText().toString(), etEmail.getText().toString())){
+                                                usuarioController.buscarPeloEmail(usu.getUSER_email());
+                                                Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
 
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if(usuarioController.inserirPIN(input.toString())){
-                                        Toast.makeText(getApplicationContext(), "PIN registrado",
-                                                Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(NovaConta.this, navigation.class);
-                                        startActivity(i);
-                                        finish();
+                                                Usuario.BV = 1;
+                                            Toast.makeText(getApplicationContext(), "PIN registrado",
+                                                    Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(NovaConta.this, navigation.class);
+                                            startActivity(i);
+                                            finish();
+                                        }else{
+                                            Toast.makeText(getApplicationContext(), "Problema ao inserir PIN", Toast.LENGTH_SHORT).show();
+                                        }
                                     }else{
-                                        Toast.makeText(getApplicationContext(), "ERRO",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Erro ao criar usuário",Toast.LENGTH_SHORT).show();
                                     }
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"Digite 4 digitos", Toast.LENGTH_SHORT).show();
                                 }
-                            });
-                            mensagem.show();
-                            // FORÇA O TECLADO APARECER AO ABRIR O ALERT
-                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-                            Usuario.BV = 1;
-
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Erro ao criar usuário.", Toast.LENGTH_SHORT).show();
-                        }
+                            }
+                        });
+                        mensagem.show();
+                        // FORÇA O TECLADO APARECER AO ABRIR O ALERT
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                      }
                 }else{
                     Toast.makeText(getApplicationContext(), "As senhas não coincidem, digite novamente.", Toast.LENGTH_SHORT).show();

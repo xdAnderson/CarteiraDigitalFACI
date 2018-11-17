@@ -9,9 +9,19 @@ public class Usuario {
     private String USER_senha;
     private String USER_status;
 
+    private static String USER_PIN;
+
     public static int BV=0;
 
     public static Usuario USUARIO_ATIVO = new Usuario();
+
+    public static String getUserPin() {
+        return USER_PIN;
+    }
+
+    public static void setUserPin(String userPin) {
+        USER_PIN = userPin;
+    }
 
     public int getUSER_id() {
         return USER_id;
