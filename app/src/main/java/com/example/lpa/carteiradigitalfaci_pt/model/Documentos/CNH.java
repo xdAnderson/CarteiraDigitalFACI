@@ -16,6 +16,7 @@ public class CNH {
     private String CNH_primeira_cnh;
     private String CNH_local;
     private String CNH_data_emissao;
+    private String CNH_observacao;
 
     public int getCNH_id() {
         return CNH_id;
@@ -127,5 +128,13 @@ public class CNH {
 
     public void setCNH_data_emissao(String CNH_data_emissao) {
         this.CNH_data_emissao = CNH_data_emissao;
+    }
+
+    public String getCNH_observacao() {
+        return CNH_observacao;
+    }
+
+    public void setCNH_observacao(String CNH_observacao) {
+        this.CNH_observacao = CNH_observacao;
     }
 }
