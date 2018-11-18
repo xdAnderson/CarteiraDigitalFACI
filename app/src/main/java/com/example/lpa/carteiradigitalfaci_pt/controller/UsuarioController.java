@@ -55,7 +55,7 @@ public class UsuarioController extends DataSource {
 
     public boolean zerarUltimoUsuario(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL(" UPDATE usuario set ult_usuario = \"0\", pin = \"0\"; ");
+        db.execSQL(" UPDATE usuario set ult_usuario = \"0\";");
         db.close();
         return true;
     }
@@ -84,7 +84,7 @@ public class UsuarioController extends DataSource {
             return false;
     }
 
-    public String logar(String email, String Senha){
+    public int logar(String email, String Senha){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM usuario WHERE email_usuario = \""+email+"\"";
         Cursor cursor = db.rawQuery(sql,null);
@@ -95,7 +95,7 @@ public class UsuarioController extends DataSource {
             String senha = cursor.getString(cursor.getColumnIndex("senha_usuario"));
             String status = cursor.getString(cursor.getColumnIndex("status_usuario"));
 
-            if(CriptografiaMD5.criptografar(Senha).equals(senha)){
+            if(CriptografiaHash.criptografar(Senha,"SHA-512").equals(senha)){
                 Usuario.USUARIO_ATIVO.setUSER_id(id);
                 Usuario.USUARIO_ATIVO.setUSER_nome(nome);
                 Usuario.USUARIO_ATIVO.setUSER_email(email);
@@ -103,21 +103,22 @@ public class UsuarioController extends DataSource {
                 Usuario.USUARIO_ATIVO.setUSER_status(status);
                 definirComoUltimoUsuarioLogado();
 
-                return "Bem Vindo "+Usuario.USUARIO_ATIVO.getUSER_nome()+"!";
+                return 1;
             }else{
-                return "Senha incorreta, tente novamente.";
+                return 2;
             }
         }else{
-            return "Usuario não encontrado.";
+            return 3;
         }
     }
     public boolean recuperarPIN(String pin){
+
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor  = db.rawQuery("SELECT pin FROM usuario WHERE id_usuario = "+Usuario.USUARIO_ATIVO.getUSER_id()+" AND pin <> \"0\"", null);
+        Cursor cursor  = db.rawQuery("SELECT pin FROM usuario WHERE id_usuario = "+Usuario.USUARIO_ATIVO.getUSER_id()+"", null);
         if(cursor.moveToFirst()){
-            CriptografiaBase64 cpb64 = new CriptografiaBase64();
-            if(cursor.getString(cursor.getColumnIndex("pin")).equals(cpb64.encrypt(pin,pin))) {
-                Usuario.setUserPin(cpb64.decrypt(pin, cursor.getString(cursor.getColumnIndex("pin"))));
+            String entradaPin = CriptografiaHash.criptografar(pin,"SHA-512");
+            if(cursor.getString(cursor.getColumnIndex("pin")).equals(entradaPin)) {
+                Usuario.setUserPin(CriptografiaHash.criptografar(pin, "MD5"));
                 db.close();
                 return true;
             }else{
@@ -133,11 +134,9 @@ public class UsuarioController extends DataSource {
     public boolean inserirPIN(String pin, String email){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        CriptografiaBase64 cb64 = new CriptografiaBase64();
-        String pinb64 = cb64.encrypt(pin,pin);
-        System.out.print("----------------AQUIIIII---->>> "+pinb64);
-        cv.put("pin", pinb64);
-        Usuario.setUserPin(pin);
+        String pinCript = CriptografiaHash.criptografar(pin, "SHA-512");
+        cv.put("pin", pinCript);
+        Usuario.setUserPin(CriptografiaHash.criptografar(pin,"MD5"));
         String[] whereArgs= {email};
         boolean inseriu = db.update("usuario",cv,"email_usuario = ?",whereArgs)>0;
         return inseriu;

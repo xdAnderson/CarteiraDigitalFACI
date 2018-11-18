@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lpa.carteiradigitalfaci_pt.R;
-import com.example.lpa.carteiradigitalfaci_pt.controller.CriptografiaMD5;
+import com.example.lpa.carteiradigitalfaci_pt.controller.CriptografiaHash;
 import com.example.lpa.carteiradigitalfaci_pt.controller.UsuarioController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
@@ -51,7 +51,7 @@ public class NovaConta extends AppCompatActivity {
                         final Usuario usu = new Usuario();
                         usu.setUSER_nome(etNomeComp.getText().toString());
                         usu.setUSER_email(etEmail.getText().toString());
-                        usu.setUSER_senha(CriptografiaMD5.criptografar(etSenha.getText().toString()));
+                        usu.setUSER_senha(CriptografiaHash.criptografar(etSenha.getText().toString(), "SHA-512"));
                         usu.setUSER_status("1");
                         AlertDialog.Builder mensagem = new AlertDialog.Builder(NovaConta.this);
                         mensagem.setCancelable(false);
@@ -72,14 +72,15 @@ public class NovaConta extends AppCompatActivity {
                                 if(tamPIN.length()==4) {
                                     if(usuarioController.salvarUsuario(usu)){
                                         if(usuarioController.inserirPIN(input.getText().toString(), etEmail.getText().toString())){
-                                                usuarioController.buscarPeloEmail(usu.getUSER_email());
-                                                Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
+                                            usuarioController.buscarPeloEmail(usu.getUSER_email());
+                                            Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
 
-                                                Usuario.BV = 1;
-                                            Toast.makeText(getApplicationContext(), "PIN registrado",
-                                                    Toast.LENGTH_SHORT).show();
+                                            Usuario.BV = 1;
+                                            InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                            imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
                                             Intent i = new Intent(NovaConta.this, navigation.class);
                                             startActivity(i);
+                                            overridePendingTransition(R.anim.entrar_direita, R.anim.sair_esquerda);
                                             finish();
                                         }else{
                                             Toast.makeText(getApplicationContext(), "Problema ao inserir PIN", Toast.LENGTH_SHORT).show();
@@ -115,6 +116,8 @@ public class NovaConta extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(NovaConta.this, Login.class);
         startActivity(i);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
         finish();
     }
 }
