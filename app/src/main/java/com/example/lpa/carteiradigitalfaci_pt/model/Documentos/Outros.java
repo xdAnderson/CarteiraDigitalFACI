@@ -3,6 +3,7 @@ package com.example.lpa.carteiradigitalfaci_pt.model.Documentos;
 public class Outros {
 
     private int OUTROS_id;
+    private String Outros_nome_doc;
     private String OUTROS_campo1;
     private String OUTROS_campo2;
     private String OUTROS_campo3;
@@ -100,5 +101,13 @@ public class Outros {
 
     public void setOUTROS_campo10(String OUTROS_campo10) {
         this.OUTROS_campo10 = OUTROS_campo10;
+    }
+
+    public String getOutros_nome_doc() {
+        return Outros_nome_doc;
+    }
+
+    public void setOutros_nome_doc(String outros_nome_doc) {
+        Outros_nome_doc = outros_nome_doc;
     }
 }

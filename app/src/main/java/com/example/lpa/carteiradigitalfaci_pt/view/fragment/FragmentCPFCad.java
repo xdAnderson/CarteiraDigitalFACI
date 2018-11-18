@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,17 +61,6 @@ public class FragmentCPFCad extends Fragment {
             public void onClick(View v) {
                 ContentValues values = new ContentValues();
                 values.put("id_usuario",Usuario.USUARIO_ATIVO.getUSER_id());
-//                byte[] numero_cpfB = null;
-//                byte[] nome_cpfB = null;
-//                byte[] dn_cpfB = null;
-//                try{
-//                    numero_cpfB = criptografiaAES.encrypt(Usuario.getUserPin(), etNumCPF.getText().toString());
-//                    nome_cpfB = criptografiaAES.encrypt(Usuario.getUserPin(), etNomeCPF.getText().toString());
-//                    dn_cpfB = criptografiaAES.encrypt(Usuario.getUserPin(), etDNCPF.getText().toString());
-//                }catch (Exception e){
-//                    Log.e("----->", "Erro Aquiiii");
-//                }
-
                 values.put("numero_cpf", criptografiaAES.encrypt(Usuario.getUserPin(), etNumCPF.getText().toString()));
                 values.put("nome_cpf", criptografiaAES.encrypt(Usuario.getUserPin(), etNomeCPF.getText().toString()));
                 values.put("dn_cpf", criptografiaAES.encrypt(Usuario.getUserPin(), etDNCPF.getText().toString()));

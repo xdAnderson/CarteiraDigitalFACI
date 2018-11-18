@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.FragmentMenuPrincipal">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etNomeCampo9_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 9"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp9_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo8_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo10_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 10"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp10_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo9_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp10_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 10"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo10_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo10_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp9_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 9"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo9_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo9_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo3_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 3"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp3_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo2_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp3_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 3"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo3_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo3_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo4_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 4"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp4_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo3_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp4_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 4"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo4_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo4_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo5_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 5"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp5_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo4_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp5_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 5"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo5_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo5_Out" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:text="Qual o nome do seu documento?"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:text="Cadastrando Outros Documentos"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btCadCPF"
+                android:layout_width="157dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/botao_cadastrar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo10_Out"
+                tools:layout_editor_absoluteX="98dp" />
+
+            <EditText
+                android:id="@+id/etNomeCampo6_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 6"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp6_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo5_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo7_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 7"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp7_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo6_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo8_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 8"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp8_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo7_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp8_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 8"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo8_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo8_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp7_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 7"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo7_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo7_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp6_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 6"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo6_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo6_Out" />
+
+            <EditText
+                android:id="@+id/etNomeDoc_Out"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Nome do seu Documento"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <EditText
+                android:id="@+id/etNomeCampo1_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Ex: Número RG"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp1_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <EditText
+                android:id="@+id/etDadoCamp1_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="0123456"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo1_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo1_Out" />
+
+            <EditText
+                android:id="@+id/etNomeCampo2_Out"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Campo 2"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/etDadoCamp2_Out"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo1_Out" />
+
+            <EditText
+                android:id="@+id/etDadoCamp2_Out"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Dado 2"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNomeCampo2_Out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNomeCampo2_Out" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Digite o nome da informação do seu documento deste lado."
+                android:textAlignment="center"
+                android:textColor="@color/design_default_color_primary"
+                app:layout_constraintEnd_toEndOf="@+id/etNomeCampo1_Out"
+                app:layout_constraintStart_toStartOf="@+id/etNomeCampo1_Out"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeDoc_Out" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:text="Digite informação do seu documento deste lado."
+                android:textAlignment="center"
+                android:textColor="@color/design_default_color_primary"
+                app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                app:layout_constraintEnd_toEndOf="@+id/etDadoCamp1_Out"
+                app:layout_constraintStart_toStartOf="@+id/etDadoCamp1_Out"
+                app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

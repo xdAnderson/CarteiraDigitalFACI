@@ -68,15 +68,21 @@ public class FragmentMenuPrincipal extends Fragment {
         btCertidao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                navigation.replaceFragmentWithAnimation(new FragmentCertidao(), "fgCert");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"certidao")){
+                    navigation.replaceFragmentWithAnimation(new FragmentCertidao(), "fgCert");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentCertidaoCad(), "fgCertCad");
                 getActivity().setTitle("Certidão de Nascimento");
+
             }
         });
         btRG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentRG(), "fgRG");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"rg")){
+                    navigation.replaceFragmentWithAnimation(new FragmentRG(), "fgRG");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentRGCad(), "fgRGCad");
                 getActivity().setTitle("Registro Geral (RG)");
             }
         });
@@ -86,42 +92,57 @@ public class FragmentMenuPrincipal extends Fragment {
                 if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"cpf")){
                     navigation.replaceFragmentWithAnimation(new FragmentCPF(), "fgCPF");
                 }else
-                    navigation.replaceFragmentWithAnimation(new FragmentCPFCad(), "fgCPF");
+                    navigation.replaceFragmentWithAnimation(new FragmentCPFCad(), "fgCPFCad");
                 getActivity().setTitle("Cad. Pessoa Física (CPF)");
             }
         });
         btCNH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentCNH(), "fgCNH");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"cnh")){
+                    navigation.replaceFragmentWithAnimation(new FragmentCNH(), "fgCNH");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentCNHCad(), "fgCNHCad");
                 getActivity().setTitle("Cart. Nac. de Habilitação");
             }
         });
         btTitulo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentTitulo(), "fgTit");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"titulo")){
+                    navigation.replaceFragmentWithAnimation(new FragmentTitulo(), "fgTit");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentTituloCad(), "fgTitCad");
                 getActivity().setTitle("Título de Eleitor");
             }
         });
         btCTPS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentCTPS(), "fgCTPS");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"ctps")){
+                    navigation.replaceFragmentWithAnimation(new FragmentCTPS(), "fgCTPS");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentCTPSCad(), "fgCTPSCad");
                 getActivity().setTitle("Cart. Trab. e Previdência Social");
             }
         });
         btReservista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentReservista(), "fgReser");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"reservista")){
+                    navigation.replaceFragmentWithAnimation(new FragmentReservista(), "fgRes");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentReservistaCad(), "fgResCad");
                 getActivity().setTitle("Cert. de Dispença (Reservista)");
             }
         });
         btOutros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation.replaceFragmentWithAnimation(new FragmentOutros(), "fgOut");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"outros")){
+                    navigation.replaceFragmentWithAnimation(new FragmentOutros(), "fgOut");
+                }else
+                    navigation.replaceFragmentWithAnimation(new FragmentOutrosCad(), "fgOutCad");
                 getActivity().setTitle("Outros Documetos");
             }
         });

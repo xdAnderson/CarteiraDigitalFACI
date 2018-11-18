@@ -29,11 +29,6 @@ public class DocumentoDataModel {
                 "  'data_reg_extenso_certidao' BLOB NULL,\n" +
                 "  'n_nasc_vivo_certidao' BLOB NULL,\n" +
                 "  'anot_averb_certidao' BLOB NULL,\n" +
-                "  'nome_oficio_certidao' BLOB NULL,\n" +
-                "  'oficial_certidao' BLOB NULL,\n" +
-                "  'end_ofic_certidao' BLOB NULL,\n" +
-                "  'telefone_ofic_certidao' BLOB NULL,\n" +
-                "  'email_ofic_certidao' BLOB NULL,\n" +
                 "  PRIMARY KEY ('matricula_certidao'),\n" +
                 "    FOREIGN KEY ('id_usuario')\n" +
                 "    REFERENCES 'usuario' ('id_usuario'));\n";
@@ -84,6 +79,7 @@ public class DocumentoDataModel {
             "CREATE TABLE IF NOT EXISTS 'outros' (\n" +
                 "  'id_usuario' INTEGER(255) NOT NULL,\n" +
                 "  'id_outros' VARCHAR(255) NOT NULL,\n" +
+                "  'nome_documento' VARCHAR(100) NOT NULL,\n" +
                 "  'campo1' BLOB NULL,\n" +
                 "  'campo2' BLOB NULL,\n" +
                 "  'campo3' BLOB NULL,\n" +
@@ -110,6 +106,13 @@ public class DocumentoDataModel {
                 "  'csm_reservista' BLOB NULL,\n" +
                 "  'nome_reservista' BLOB NULL,\n" +
                 "  'emissao_reservista' BLOB NULL,\n" +
+                "  'filiacao_mae_reservista' BLOB NULL,\n" +
+                "  'filiacao_pai_reservista' BLOB NULL,\n" +
+                "  'dn_reservista' BLOB NULL,\n" +
+                "  'naturalidade_reservista' BLOB NULL,\n" +
+                "  'data_dispensa_reservista' BLOB NULL,\n" +
+                "  'motivo_dispensa_reservista' BLOB NULL,\n" +
+                "  'responsavel_dispensa_reservista' BLOB NULL,\n" +
                 "  PRIMARY KEY ('reg_alist_reservista'),\n" +
                 "    FOREIGN KEY ('id_usuario')\n" +
                 "    REFERENCES 'usuario' ('id_usuario'));\n";

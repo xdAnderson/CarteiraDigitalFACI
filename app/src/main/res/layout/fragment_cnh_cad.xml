@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.FragmentMenuPrincipal">
+
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etLocal_CNH"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Local, "
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/spLocalUF_CNH"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etObs_CNH" />
+
+            <Spinner
+                android:id="@+id/spLocalUF_CNH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:entries="@array/estados"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etLocal_CNH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etLocal_CNH" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="9dp"
+                android:text="Filiação:"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNumCPF_CNH" />
+
+            <EditText
+                android:id="@+id/etFiliacao1_CNH"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:ems="10"
+                android:hint="Mãe ou Pai"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="e"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFiliacao1_CNH" />
+
+            <EditText
+                android:id="@+id/etFiliacao2_CNH"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Pai ou Mãe"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            <EditText
+                android:id="@+id/etNumReg_CNH"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Número do Registro"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPerm_CNH" />
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/etValidade_CNH"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Validade"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/etPrimHab_CNH"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNumReg_CNH"
+                app:mask="##/##/####" />
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/etDataEmissao_CNH"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Data de Emissão"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etLocal_CNH"
+                app:mask="##/##/####" />
+
+            <EditText
+                android:id="@+id/etPrimHab_CNH"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="1ª Habilitação"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etValidade_CNH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etValidade_CNH" />
+
+            <EditText
+                android:id="@+id/etObs_CNH"
+                android:layout_width="315dp"
+                android:layout_height="147dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Observações"
+                android:inputType="textMultiLine"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etValidade_CNH" />
+
+            <EditText
+                android:id="@+id/etPerm_CNH"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="1dp"
+                android:ems="10"
+                android:hint="Permissão"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/etACC_CNH"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etFiliacao2_CNH" />
+
+            <EditText
+                android:id="@+id/etACC_CNH"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="ACC"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etPerm_CNH"
+                app:layout_constraintEnd_toStartOf="@+id/etCatHab_CNH"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etPerm_CNH" />
+
+            <EditText
+                android:id="@+id/etCatHab_CNH"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:ems="10"
+                android:hint="Cat. Hab."
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etACC_CNH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etACC_CNH" />
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/etNumCPF_CNH"
+                android:layout_width="193dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Número do CPF"
+                android:inputType="date"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/etDN_CNH"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDocIdentOrg_CNH"
+                app:mask="###.###.###-##" />
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/etDN_CNH"
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:ems="10"
+                android:hint="Nascimento"
+                android:inputType="date"
+                android:textAlignment="center"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etNumCPF_CNH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etNumCPF_CNH"
+                app:mask="##/##/####" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="Cadastrando Carteira Nacional de Habilitação"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="157dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/botao_cadastrar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.518"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDataEmissao_CNH" />
+
+            <EditText
+                android:id="@+id/etNome_CNH"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="Nome Completo"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/etDocIdentOrg_CNH"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="2dp"
+                android:ems="10"
+                android:hint="Doc Identidade  Órgão Emissor"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/spUFDocIdentOrg_CNH"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNome_CNH" />
+
+            <Spinner
+                android:id="@+id/spUFDocIdentOrg_CNH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:entries="@array/estados"
+                app:layout_constraintBaseline_toBaselineOf="@+id/etDocIdentOrg_CNH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etDocIdentOrg_CNH" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

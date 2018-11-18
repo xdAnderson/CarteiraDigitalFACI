@@ -9,6 +9,13 @@ public class Reservista {
     private String RESERVISTA_csm;
     private String RESERVISTA_nom;
     private String RESERVISTA_emissao;
+    private String RESERVISTA_filiacao_mae;
+    private String RESERVISTA_filiacao_pai;
+    private String RESERVISTA_dn;
+    private String RESERVISTA_naturalidade;
+    private String RESERVISTA_data_dispensa;
+    private String RESERVISTA_motivo_dispensa;
+    private String RESERVISTA_responsavel;
 
     public int getRESERVISTA_id() {
         return RESERVISTA_id;
@@ -64,5 +71,61 @@ public class Reservista {
 
     public void setRESERVISTA_emissao(String RESERVISTA_emissao) {
         this.RESERVISTA_emissao = RESERVISTA_emissao;
+    }
+
+    public String getRESERVISTA_filiacao_pai() {
+        return RESERVISTA_filiacao_pai;
+    }
+
+    public void setRESERVISTA_filiacao_pai(String RESERVISTA_filiacao_pai) {
+        this.RESERVISTA_filiacao_pai = RESERVISTA_filiacao_pai;
+    }
+
+    public String getRESERVISTA_dn() {
+        return RESERVISTA_dn;
+    }
+
+    public void setRESERVISTA_dn(String RESERVISTA_dn) {
+        this.RESERVISTA_dn = RESERVISTA_dn;
+    }
+
+    public String getRESERVISTA_naturalidade() {
+        return RESERVISTA_naturalidade;
+    }
+
+    public void setRESERVISTA_naturalidade(String RESERVISTA_naturalidade) {
+        this.RESERVISTA_naturalidade = RESERVISTA_naturalidade;
+    }
+
+    public String getRESERVISTA_data_dispensa() {
+        return RESERVISTA_data_dispensa;
+    }
+
+    public void setRESERVISTA_data_dispensa(String RESERVISTA_data_dispensa) {
+        this.RESERVISTA_data_dispensa = RESERVISTA_data_dispensa;
+    }
+
+    public String getRESERVISTA_motivo_dispensa() {
+        return RESERVISTA_motivo_dispensa;
+    }
+
+    public void setRESERVISTA_motivo_dispensa(String RESERVISTA_motivo_dispensa) {
+        this.RESERVISTA_motivo_dispensa = RESERVISTA_motivo_dispensa;
+    }
+
+    public String getRESERVISTA_responsavel() {
+        return RESERVISTA_responsavel;
+    }
+
+    public void setRESERVISTA_responsavel(String RESERVISTA_responsavel) {
+        this.RESERVISTA_responsavel = RESERVISTA_responsavel;
+    }
+
+    public String getRESERVISTA_filiacao_mae() {
+        return RESERVISTA_filiacao_mae;
+    }
+
+    public void setRESERVISTA_filiacao_mae(String RESERVISTA_filiacao_mae) {
+        this.RESERVISTA_filiacao_mae = RESERVISTA_filiacao_mae;
     }
 }

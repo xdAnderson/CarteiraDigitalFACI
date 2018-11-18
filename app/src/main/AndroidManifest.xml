@@ -20,12 +20,9 @@
         <activity
             android:name=".view.navigation"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".view.Login"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".view.NovaConta"
-            android:windowSoftInputMode="adjustPan"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".view.Login"/>
+        <activity android:name=".view.NovaConta"/>
         <activity android:name=".view.ConfigActivity"></activity>
     </application>
 
