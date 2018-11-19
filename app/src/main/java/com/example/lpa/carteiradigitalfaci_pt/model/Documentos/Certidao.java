@@ -8,6 +8,7 @@ public class Certidao {
     private String CERTIDAO_dn_extenso;
     private String CERTIDAO_dn;
     private String CERTIDAO_hora_nasc;
+    private String CERTIDAO_naturalidade;
     private String CERTIDAO_municipio_nasc;
     private String CERTIDAO_federacao_nasc;
     private String CERTIDAO_municipio_reg;
@@ -24,12 +25,7 @@ public class Certidao {
     private String CERTIDAO_nome_mat_gemeos;
     private String CERTIDAO_data_reg_extenso;
     private String CERTIDAO_n_nasc_vivo;
-    private String CERTIDAO_anot_averb;
-    private String CERTIDAO_nome_oficio;
-    private String CERTIDAO_oficial;
-    private String CERTIDAO_end_ofic;
-    private String CERTIDAO_telefone_ofic;
-    private String CERTIDAO_email_ofic;
+    private String CERTIDAO_averb_anot;
 
     public int getCERTIDAO_id() {
         return CERTIDAO_id;
@@ -207,7 +203,7 @@ public class Certidao {
         this.CERTIDAO_data_reg_extenso = CERTIDAO_data_reg_extenso;
     }
 
-    public String getCERTIDAO_n_nasc_vivo() {
+    public String getCERTIDAO_dnv() {
         return CERTIDAO_n_nasc_vivo;
     }
 
@@ -215,51 +211,19 @@ public class Certidao {
         this.CERTIDAO_n_nasc_vivo = CERTIDAO_n_nasc_vivo;
     }
 
-    public String getCERTIDAO_anot_averb() {
-        return CERTIDAO_anot_averb;
+    public String getCERTIDAO_averb_anot() {
+        return CERTIDAO_averb_anot;
     }
 
-    public void setCERTIDAO_anot_averb(String CERTIDAO_anot_averb) {
-        this.CERTIDAO_anot_averb = CERTIDAO_anot_averb;
+    public void setCERTIDAO_averb_anot(String CERTIDAO_averb_anot) {
+        this.CERTIDAO_averb_anot = CERTIDAO_averb_anot;
     }
 
-    public String getCERTIDAO_nome_oficio() {
-        return CERTIDAO_nome_oficio;
+    public String getCERTIDAO_naturalidade() {
+        return CERTIDAO_naturalidade;
     }
 
-    public void setCERTIDAO_nome_oficio(String CERTIDAO_nome_oficio) {
-        this.CERTIDAO_nome_oficio = CERTIDAO_nome_oficio;
-    }
-
-    public String getCERTIDAO_oficial() {
-        return CERTIDAO_oficial;
-    }
-
-    public void setCERTIDAO_oficial(String CERTIDAO_oficial) {
-        this.CERTIDAO_oficial = CERTIDAO_oficial;
-    }
-
-    public String getCERTIDAO_end_ofic() {
-        return CERTIDAO_end_ofic;
-    }
-
-    public void setCERTIDAO_end_ofic(String CERTIDAO_end_ofic) {
-        this.CERTIDAO_end_ofic = CERTIDAO_end_ofic;
-    }
-
-    public String getCERTIDAO_telefone_ofic() {
-        return CERTIDAO_telefone_ofic;
-    }
-
-    public void setCERTIDAO_telefone_ofic(String CERTIDAO_telefone_ofic) {
-        this.CERTIDAO_telefone_ofic = CERTIDAO_telefone_ofic;
-    }
-
-    public String getCERTIDAO_email_ofic() {
-        return CERTIDAO_email_ofic;
-    }
-
-    public void setCERTIDAO_email_ofic(String CERTIDAO_email_ofic) {
-        this.CERTIDAO_email_ofic = CERTIDAO_email_ofic;
+    public void setCERTIDAO_naturalidade(String CERTIDAO_naturalidade) {
+        this.CERTIDAO_naturalidade = CERTIDAO_naturalidade;
     }
 }

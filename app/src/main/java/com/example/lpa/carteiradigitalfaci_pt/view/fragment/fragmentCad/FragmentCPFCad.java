@@ -1,4 +1,4 @@
-package com.example.lpa.carteiradigitalfaci_pt.view.fragment;
+package com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,6 +17,7 @@ import com.example.lpa.carteiradigitalfaci_pt.controller.CriptografiaAES;
 import com.example.lpa.carteiradigitalfaci_pt.controller.DocumentoController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Documentos.CPF;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.FragmentCPF;
 import com.example.lpa.carteiradigitalfaci_pt.view.navigation;
 
 
@@ -41,7 +42,7 @@ public class FragmentCPFCad extends Fragment {
         final EditText etNumCPF = view.findViewById(R.id.etNumCPF);
         final EditText etNomeCPF = view.findViewById(R.id.etNomeCPF);
         final EditText etDNCPF = view.findViewById(R.id.etDNCPF);
-        final Button btCadCPF = view.findViewById(R.id.btCadCPF);
+        final Button btCadCPF = view.findViewById(R.id.btCad_CPF);
         final DocumentoController documentoController = new DocumentoController(getContext());
         final CriptografiaAES criptografiaAES = new CriptografiaAES();
 

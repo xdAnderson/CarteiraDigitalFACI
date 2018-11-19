@@ -1,4 +1,4 @@
-package com.example.lpa.carteiradigitalfaci_pt.view.fragment;
+package com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 import com.example.lpa.carteiradigitalfaci_pt.R;
 
 
-public class FragmentOutrosCad extends Fragment {
+public class FragmentCTPSCad extends Fragment {
     View view;
 
     boolean possui = false;
-    public FragmentOutrosCad() {
+    public FragmentCTPSCad() {
 
     }
     @Override
@@ -25,7 +25,7 @@ public class FragmentOutrosCad extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_outros_cad, container, false);
+        view = inflater.inflate(R.layout.fragment_ctps_cad, container, false);
 
 //        final EditText etNumCPF = view.findViewById(R.id.etNumCPF);
 //        final EditText etNomeCPF = view.findViewById(R.id.etNomeCPF);

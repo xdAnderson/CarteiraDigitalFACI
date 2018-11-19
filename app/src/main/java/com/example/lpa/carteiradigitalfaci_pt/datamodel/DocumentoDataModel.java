@@ -13,6 +13,7 @@ public class DocumentoDataModel {
                 "  'dn_certidao' BLOB NULL,\n" +
                 "  'hora_nasc_certidao' BLOB NULL,\n" +
                 "  'municipio_nasc_certidao' BLOB NULL,\n" +
+                "  'naturalidade_certidao' BLOB NULL,\n" +
                 "  'federacao_nasc_certidao' BLOB NULL,\n" +
                 "  'municipio_reg_certidao' BLOB NULL,\n" +
                 "  'federacao_reg_certidao' BLOB NULL,\n" +
@@ -78,8 +79,8 @@ public class DocumentoDataModel {
 
             "CREATE TABLE IF NOT EXISTS 'outros' (\n" +
                 "  'id_usuario' INTEGER(255) NOT NULL,\n" +
-                "  'id_outros' VARCHAR(255) NOT NULL,\n" +
-                "  'nome_documento' VARCHAR(100) NOT NULL,\n" +
+                "  'id_outros' INTEGER(255) AUTOINCREMENT,\n" +
+                "  'nome_documento' BLOB NOT NULL,\n" +
                 "  'campo1' BLOB NULL,\n" +
                 "  'campo2' BLOB NULL,\n" +
                 "  'campo3' BLOB NULL,\n" +

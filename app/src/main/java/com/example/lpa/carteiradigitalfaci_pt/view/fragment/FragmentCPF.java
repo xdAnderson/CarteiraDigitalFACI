@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.lpa.carteiradigitalfaci_pt.R;
 import com.example.lpa.carteiradigitalfaci_pt.controller.DocumentoController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Documentos.CPF;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCPFCad;
 import com.example.lpa.carteiradigitalfaci_pt.view.navigation;
 
 

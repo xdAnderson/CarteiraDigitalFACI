@@ -1,4 +1,4 @@
-package com.example.lpa.carteiradigitalfaci_pt.view.fragment;
+package com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

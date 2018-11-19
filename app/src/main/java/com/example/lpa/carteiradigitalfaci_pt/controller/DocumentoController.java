@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Spinner;
 
 import com.example.lpa.carteiradigitalfaci_pt.datasource.DataSource;
 import com.example.lpa.carteiradigitalfaci_pt.model.Documentos.CNH;
@@ -72,18 +73,10 @@ public class DocumentoController extends DataSource {
                 cursor.getBlob(cursor.getColumnIndex("data_reg_extenso_certidao"))));
         objCertidao.setCERTIDAO_n_nasc_vivo(CriptografiaAES.decrypt(Usuario.getUserPin(),
                 cursor.getBlob(cursor.getColumnIndex("n_nasc_vivo_certidao"))));
-        objCertidao.setCERTIDAO_anot_averb(CriptografiaAES.decrypt(Usuario.getUserPin(),
+        objCertidao.setCERTIDAO_averb_anot(CriptografiaAES.decrypt(Usuario.getUserPin(),
                 cursor.getBlob(cursor.getColumnIndex("anot_averb_certidao"))));
-        objCertidao.setCERTIDAO_nome_oficio(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("nome_oficio_certidao"))));
-        objCertidao.setCERTIDAO_oficial(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("oficial_certidao"))));
-        objCertidao.setCERTIDAO_end_ofic(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("end_ofic_certidao"))));
-        objCertidao.setCERTIDAO_telefone_ofic(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("telefone_ofic_certidao"))));
-        objCertidao.setCERTIDAO_email_ofic(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("email_ofic_certidao"))));
+        objCertidao.setCERTIDAO_naturalidade(CriptografiaAES.decrypt(Usuario.getUserPin(),
+                cursor.getBlob(cursor.getColumnIndex("naturalidade_certidao"))));
         db.close();
         return objCertidao;
     }
@@ -292,6 +285,14 @@ public class DocumentoController extends DataSource {
         return objCTPS;
     }
 
+    public int definirItemSpinner(Spinner spinner, String item){
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(item)){
+                return i;
+            }
+        }
+        return 0;
+    }
 
     public boolean verificarSePossuiDocumento(String id_usuario, String documento){
         SQLiteDatabase db = this.getReadableDatabase();

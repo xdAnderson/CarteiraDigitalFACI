@@ -11,6 +11,14 @@ import android.widget.TextView;
 import com.example.lpa.carteiradigitalfaci_pt.R;
 import com.example.lpa.carteiradigitalfaci_pt.controller.DocumentoController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCNHCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCPFCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCTPSCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCertidaoCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentOutrosCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentRGCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentReservistaCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentTituloCad;
 import com.example.lpa.carteiradigitalfaci_pt.view.navigation;
 
 
