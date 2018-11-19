@@ -71,7 +71,7 @@ public class FragmentCertidaoCad extends Fragment {
         final CriptografiaAES criptografiaAES = new CriptografiaAES();
         final DocumentoController documentoController = new DocumentoController(getContext());
     //Verificação de Documento existente
-        if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()), "cpf")){
+        if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()), "certidao")){
             Certidao objCertidao = documentoController.buscarCertidao();
             etNome_Cert.setText(objCertidao.getCERTIDAO_nome());
             etNumCPF_Cert.setText(objCertidao.getCERTIDAO_cpf());
@@ -111,7 +111,7 @@ public class FragmentCertidaoCad extends Fragment {
             public void onClick(View v) {
                 ContentValues values = new ContentValues();
 
-                values.put("id_usuario",Usuario.USUARIO_ATIVO.getUSER_id());
+                values.put("id_usuario",Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()));
                 values.put("nome_certidap", criptografiaAES.encrypt(Usuario.getUserPin(), etNome_Cert.getText().toString()));
                 values.put("cpf_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etNumCPF_Cert.getText().toString()));
                 values.put("matricula_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etMatricula_Cert.getText().toString()));
@@ -138,7 +138,7 @@ public class FragmentCertidaoCad extends Fragment {
                 values.put("anot_averb_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etAverbAnot_Cert.getText().toString()));
 
                 if(possui){
-                    if(documentoController.atualizarDocumento(values, "cpf")){
+                    if(documentoController.atualizarDocumento(values, "certidao")){
                         Toast.makeText(getContext(),"Certidão atualizada", Toast.LENGTH_SHORT).show();
                         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(etAverbAnot_Cert.getWindowToken(), 0);
