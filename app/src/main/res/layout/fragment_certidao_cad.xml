@@ -34,7 +34,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etFiliacetAvohMat_Cert" />
+                app:layout_constraintTop_toBottomOf="@+id/etAvohMat_Cert" />
 
             <EditText
                 android:id="@+id/etAvohPat_Cert"
@@ -213,14 +213,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/etMunicReg_Cert" />
 
             <EditText
-                android:id="@+id/etFiliacao1_Cert"
+                android:id="@+id/etFiliaMae_Cert"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Mãe ou Pai"
+                android:hint="Nome da Mãe"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -274,7 +274,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/etDataRegExt_Cert" />
 
             <EditText
-                android:id="@+id/etFiliacetAvohMat_Cert"
+                android:id="@+id/etAvohMat_Cert"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -290,14 +290,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/etAvomMat_Cert" />
 
             <EditText
-                android:id="@+id/etFiliacao2_Cert"
+                android:id="@+id/etFiliaPai_Cert"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="Pai ou Mãe"
+                android:hint="Nome do Pai"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -373,7 +373,7 @@
                 app:layout_constraintStart_toEndOf="@+id/etMunicNasc_Cert" />
 
             <Spinner
-                android:id="@+id/spQuantGemeo_Cert"
+                android:id="@+id/spQuantGem_Cert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/QuantGemeos"
@@ -405,7 +405,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etFiliacao2_Cert" />
+                app:layout_constraintTop_toBottomOf="@+id/etFiliaPai_Cert" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -429,7 +429,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etFiliacao1_Cert"
+                app:layout_constraintTop_toBottomOf="@+id/etFiliaMae_Cert"
                 tools:text="e" />
 
             <EditText
@@ -444,11 +444,11 @@
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spQuantGemeo_Cert"
+                app:layout_constraintStart_toEndOf="@+id/spQuantGem_Cert"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btCad_Cert"
                 android:layout_width="157dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="24dp"

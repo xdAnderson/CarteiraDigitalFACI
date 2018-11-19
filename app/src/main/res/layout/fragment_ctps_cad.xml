@@ -308,7 +308,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/etNum_CTPS" />
 
             <Button
-                android:id="@+id/btCadCTPS"
+                android:id="@+id/btCad_CTPS"
                 android:layout_width="157dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="24dp"

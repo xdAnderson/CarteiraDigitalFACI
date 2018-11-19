@@ -62,7 +62,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/etNumCPF" />
 
             <Button
-                android:id="@+id/btCadCPF"
+                android:id="@+id/btCad_CPF"
                 android:layout_width="157dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="24dp"
