@@ -41,10 +41,85 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="384dp"
+        android:layout_height="487dp"
         android:src="@drawable/mask_certidao"
         app:layout_constraintBottom_toTopOf="@+id/btEditarCert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNome_Cert"
+        android:layout_width="210dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="35dp"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        tools:layout_editor_absoluteY="163dp" />
+
+    <TextView
+        android:id="@+id/tvHoraNasc_Cert"
+        android:layout_width="77dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="35dp"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        tools:layout_editor_absoluteY="191dp" />
+
+    <TextView
+        android:id="@+id/tvHoraNasc_Cert2"
+        android:layout_width="233dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvHoraNasc_Cert"
+        tools:layout_editor_absoluteY="191dp" />
+
+    <TextView
+        android:id="@+id/tvDiaNasc_Cert"
+        android:layout_width="25dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toEndOf="@+id/tvNome_Cert"
+        tools:layout_editor_absoluteY="163dp" />
+
+    <TextView
+        android:id="@+id/tvMesNasc_Cert"
+        android:layout_width="26dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="5dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toEndOf="@+id/tvDiaNasc_Cert"
+        tools:layout_editor_absoluteY="163dp" />
+
+    <TextView
+        android:id="@+id/tvMesNasc_Cert2"
+        android:layout_width="39dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="35dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvMesNasc_Cert"
+        tools:layout_editor_absoluteY="163dp" />
 
 </android.support.constraint.ConstraintLayout>

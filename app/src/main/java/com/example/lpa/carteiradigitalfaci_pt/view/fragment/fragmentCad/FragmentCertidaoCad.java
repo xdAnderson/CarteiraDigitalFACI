@@ -41,7 +41,6 @@ public class FragmentCertidaoCad extends Fragment {
         view = inflater.inflate(R.layout.fragment_certidao_cad, container, false);
     //Cast dos Edits Text
         final EditText etNome_Cert = view.findViewById(R.id.etNome_Cert);
-        final EditText etNumCPF_Cert = view.findViewById(R.id.etNumCPF_Cert);
         final EditText etMatricula_Cert = view.findViewById(R.id.etMatricula_Cert);
         final EditText etDNExt_Cert = view.findViewById(R.id.etDNExt_Cert);
         final EditText etDN_Cert = view.findViewById(R.id.etDN_Cert);
@@ -74,7 +73,6 @@ public class FragmentCertidaoCad extends Fragment {
         if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()), "certidao")){
             Certidao objCertidao = documentoController.buscarCertidao();
             etNome_Cert.setText(objCertidao.getCERTIDAO_nome());
-            etNumCPF_Cert.setText(objCertidao.getCERTIDAO_cpf());
             etMatricula_Cert.setText(objCertidao.getCERTIDAO_matricula());
             etDNExt_Cert.setText(objCertidao.getCERTIDAO_dn_extenso());
             etDN_Cert.setText(objCertidao.getCERTIDAO_dn());
@@ -113,7 +111,6 @@ public class FragmentCertidaoCad extends Fragment {
 
                 values.put("id_usuario",Usuario.USUARIO_ATIVO.getUSER_id());
                 values.put("nome_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etNome_Cert.getText().toString()));
-                values.put("cpf_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etNumCPF_Cert.getText().toString()));
                 values.put("matricula_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etMatricula_Cert.getText().toString()));
                 values.put("dn_extenso_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etDNExt_Cert.getText().toString()));
                 values.put("dn_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etDN_Cert.getText().toString()));

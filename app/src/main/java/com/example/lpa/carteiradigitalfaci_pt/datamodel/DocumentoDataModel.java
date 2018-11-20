@@ -6,7 +6,6 @@ public class DocumentoDataModel {
         String qr;
         qr = "CREATE TABLE IF NOT EXISTS 'certidao' (\n" +
                 "  'id_usuario' INTEGER(255) NOT NULL,\n" +
-                "  'cpf_certidao' BLOB NULL,\n" +
                 "  'nome_certidao' BLOB NULL,\n" +
                 "  'matricula_certidao' BLOB NULL,\n" +
                 "  'dn_extenso_certidao' BLOB NULL,\n" +
