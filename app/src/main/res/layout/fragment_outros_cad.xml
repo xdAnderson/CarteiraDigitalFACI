@@ -221,8 +221,10 @@
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/botao_cadastrar"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo10_Out"
-                tools:layout_editor_absoluteX="98dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNomeCampo10_Out" />
 
             <EditText
                 android:id="@+id/etNomeCampo6_Out"

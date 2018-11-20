@@ -7,15 +7,44 @@
     android:background="@android:color/darker_gray"
     tools:context=".view.fragment.FragmentMenuPrincipal">
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/mask_certidao"
+    <Button
+        android:id="@+id/btEditarCert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/botao_esquerdo"
+        android:drawableTop="@drawable/icon_edit"
+        android:text="Editar"
+        android:textColor="@android:color/background_light"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btExcluirCert"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <Button
+        android:id="@+id/btExcluirCert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botao_direito"
+        android:drawableTop="@drawable/icon_delete"
+        android:text="Excluir"
+        android:textColor="@android:color/background_light"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btEditarCert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btEditarCert" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/mask_certidao"
+        app:layout_constraintBottom_toTopOf="@+id/btEditarCert"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

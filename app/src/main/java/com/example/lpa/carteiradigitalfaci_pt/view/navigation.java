@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.lpa.carteiradigitalfaci_pt.R;
+import com.example.lpa.carteiradigitalfaci_pt.controller.DocumentoController;
 import com.example.lpa.carteiradigitalfaci_pt.controller.UsuarioController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 import com.example.lpa.carteiradigitalfaci_pt.view.fragment.FragmentCNH;
@@ -33,6 +34,14 @@ import com.example.lpa.carteiradigitalfaci_pt.view.fragment.FragmentOutros;
 import com.example.lpa.carteiradigitalfaci_pt.view.fragment.FragmentRG;
 import com.example.lpa.carteiradigitalfaci_pt.view.fragment.FragmentReservista;
 import com.example.lpa.carteiradigitalfaci_pt.view.fragment.FragmentTitulo;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCNHCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCPFCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCTPSCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentCertidaoCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentOutrosCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentRGCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentReservistaCad;
+import com.example.lpa.carteiradigitalfaci_pt.view.fragment.fragmentCad.FragmentTituloCad;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -49,7 +58,7 @@ public class navigation extends AppCompatActivity
         setSupportActionBar(toolbar);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_add);
+        FloatingActionButton fab = findViewById(R.id.fab_add);
 
 
         fab.setAlpha(0.5f);
@@ -153,25 +162,62 @@ public class navigation extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        DocumentoController documentoController = new DocumentoController(getApplicationContext());
         if (id == R.id.nav_main) {
             replaceFragmentWithAnimation(new FragmentMenuPrincipal(), "fgMP", "Carteira Digital");
-        } else if (id == R.id.nav_certidao) {
-            replaceFragmentWithAnimation(new FragmentCertidao(), "fgCert", "Certidão de Nascimento");
-        } else if (id == R.id.nav_rg) {
-            replaceFragmentWithAnimation(new FragmentRG(), "fgRG", "Registro Geral (RG)");
-        } else if (id == R.id.nav_cpf) {
-            replaceFragmentWithAnimation(new FragmentCPF(), "fgCPF", "Cad. Pessoa Física (CPF)");
-        } else if (id == R.id.nav_cnh) {
-            replaceFragmentWithAnimation(new FragmentCNH(), "fgCNH", "Cart. Nac. de Habilitação");
-        } else if (id == R.id.nav_ctps) {
-            replaceFragmentWithAnimation(new FragmentCTPS(), "fgCTPS", "Cart. Trab. e Previdência Social");
-        } else if (id == R.id.nav_titulo) {
-            replaceFragmentWithAnimation(new FragmentTitulo(), "fgfgTit", "Título de Eleitor");
+        } else
+            if (id == R.id.nav_certidao) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"certidao")){
+                    replaceFragmentWithAnimation(new FragmentCertidao(), "fgCert","Certidão de Nascimento");
+                }else
+                    replaceFragmentWithAnimation(new FragmentCertidaoCad(), "fgCertCad","Certidão de Nascimento");
+        } else
+            if (id == R.id.nav_rg) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"rg")){
+                    replaceFragmentWithAnimation(new FragmentRG(), "fgRG","\"Registro Geral (RG)\"");
+                }else
+                    replaceFragmentWithAnimation(new FragmentRGCad(), "fgRGCad","\"Registro Geral (RG)\"");
+        } else
+            if (id == R.id.nav_cpf) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"cpf")){
+                    replaceFragmentWithAnimation(new FragmentCPF(), "fgCPF","Cad. Pessoa Física (CPF)");
+                }else
+                    replaceFragmentWithAnimation(new FragmentCPFCad(), "fgCPFCad","Cad. Pessoa Física (CPF)");
+
+        } else
+            if (id == R.id.nav_cnh) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"cnh")){
+                    replaceFragmentWithAnimation(new FragmentCNH(), "fgCNH","Cart. Nac. de Habilitação");
+                }else
+                    replaceFragmentWithAnimation(new FragmentCNHCad(), "fgCNHCad","Cart. Nac. de Habilitação");
+
+        } else
+            if (id == R.id.nav_ctps) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"ctps")){
+                    replaceFragmentWithAnimation(new FragmentCTPS(), "fgCTPS","Cart. Trab. e Previdência Social");
+                }else
+                    replaceFragmentWithAnimation(new FragmentCTPSCad(), "fgCTPSCad","Cart. Trab. e Previdência Social");
+
+        } else
+            if (id == R.id.nav_titulo) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"titulo")){
+                    replaceFragmentWithAnimation(new FragmentTitulo(), "fgTit","Título de Eleitor");
+                }else
+                    replaceFragmentWithAnimation(new FragmentTituloCad(), "fgTitCad","Título de Eleitor");
+
         } else if (id == R.id.nav_reservista) {
-            replaceFragmentWithAnimation(new FragmentReservista(), "fgReser", "Reservista");
-        } else if (id == R.id.nav_outros) {
-            replaceFragmentWithAnimation(new FragmentOutros(), "fgOut", "Outros Documentos");
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"reservista")){
+                    replaceFragmentWithAnimation(new FragmentReservista(), "fgRes","Reservista");
+                }else
+                    replaceFragmentWithAnimation(new FragmentReservistaCad(), "fgResCad","Reservista");
+
+        } else
+            if (id == R.id.nav_outros) {
+                if(documentoController.verificarSePossuiDocumento(Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()),"outros")){
+                    replaceFragmentWithAnimation(new FragmentOutros(), "fgOut","Outros Documentos");
+                }else
+                    replaceFragmentWithAnimation(new FragmentOutrosCad(), "fgOutCad","Outros Documentos");
+
         } else if (id == R.id.nav_config) {
             startActivity(new Intent(navigation.this, ConfigActivity.class));
         } else if (id == R.id.nav_share) {

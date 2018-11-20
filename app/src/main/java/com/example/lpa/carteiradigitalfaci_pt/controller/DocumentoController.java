@@ -296,7 +296,7 @@ public class DocumentoController extends DataSource {
 
     public boolean verificarSePossuiDocumento(String id_usuario, String documento){
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM "+documento+" WHERE id_usuario = \""+id_usuario+"\"";
+        String sql = "SELECT * FROM "+documento+" WHERE id_usuario = \""+id_usuario+"\";";
         Cursor cursor = db.rawQuery(sql,null);
 
         if(cursor.moveToFirst()){
@@ -307,8 +307,10 @@ public class DocumentoController extends DataSource {
             return false;
         }
     }
+
     public boolean inserirDocumento(ContentValues values, String documento){
         SQLiteDatabase db = this.getWritableDatabase();
+
         boolean inseriu = db.insert(documento, null, values)>0;
         db.close();
         return inseriu;

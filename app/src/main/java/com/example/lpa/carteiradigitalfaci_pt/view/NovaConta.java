@@ -76,8 +76,6 @@ public class NovaConta extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
 
                                             Usuario.BV = 1;
-                                            InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                                            imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
                                             Intent i = new Intent(NovaConta.this, navigation.class);
                                             startActivity(i);
                                             overridePendingTransition(R.anim.entrar_direita, R.anim.sair_esquerda);

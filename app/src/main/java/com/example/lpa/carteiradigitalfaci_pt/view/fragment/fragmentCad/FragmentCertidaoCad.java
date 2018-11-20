@@ -111,8 +111,8 @@ public class FragmentCertidaoCad extends Fragment {
             public void onClick(View v) {
                 ContentValues values = new ContentValues();
 
-                values.put("id_usuario",Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id()));
-                values.put("nome_certidap", criptografiaAES.encrypt(Usuario.getUserPin(), etNome_Cert.getText().toString()));
+                values.put("id_usuario",Usuario.USUARIO_ATIVO.getUSER_id());
+                values.put("nome_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etNome_Cert.getText().toString()));
                 values.put("cpf_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etNumCPF_Cert.getText().toString()));
                 values.put("matricula_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etMatricula_Cert.getText().toString()));
                 values.put("dn_extenso_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etDNExt_Cert.getText().toString()));

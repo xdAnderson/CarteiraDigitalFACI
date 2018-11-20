@@ -34,8 +34,6 @@ public class Login extends AppCompatActivity  {
         TextView tvEsqueci = findViewById(R.id.tvEsqueci);
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etSenha = findViewById(R.id.etSenha);
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         final UsuarioController usuarioController = new UsuarioController(getBaseContext());
         usuarioController.zerarUltimoUsuario();
 
