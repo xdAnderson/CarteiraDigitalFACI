@@ -45,7 +45,6 @@ public class FragmentCertidaoCad extends Fragment {
         final EditText etDNExt_Cert = view.findViewById(R.id.etDNExt_Cert);
         final EditText etDN_Cert = view.findViewById(R.id.etDN_Cert);
         final EditText etHoraNasc_Cert = view.findViewById(R.id.etHoraNasc_Cert);
-        final EditText etNaturalidade_Cert = view.findViewById(R.id.etNaturalidade_Cert);
         final EditText etMunicReg_Cert = view.findViewById(R.id.etMunicReg_Cert);
         final EditText etLocalNasc_Cert = view.findViewById(R.id.etLocalNasc_Cert);
         final EditText etMunicNasc_Cert = view.findViewById(R.id.etMunicNasc_Cert);
@@ -77,7 +76,6 @@ public class FragmentCertidaoCad extends Fragment {
             etDNExt_Cert.setText(objCertidao.getCERTIDAO_dn_extenso());
             etDN_Cert.setText(objCertidao.getCERTIDAO_dn());
             etHoraNasc_Cert.setText(objCertidao.getCERTIDAO_hora_nasc());
-            etNaturalidade_Cert.setText(objCertidao.getCERTIDAO_naturalidade());
             String sexoSP = objCertidao.getCERTIDAO_sexo();
             spSexo_Cert.setSelection(documentoController.definirItemSpinner(spSexo_Cert, sexoSP));
             etMunicReg_Cert.setText(objCertidao.getCERTIDAO_municipio_reg());
@@ -116,7 +114,6 @@ public class FragmentCertidaoCad extends Fragment {
                 values.put("dn_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etDN_Cert.getText().toString()));
                 values.put("hora_nasc_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etHoraNasc_Cert.getText().toString()));
                 values.put("municipio_nasc_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etMunicNasc_Cert.getText().toString()));
-                values.put("naturalidade_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etNaturalidade_Cert.getText().toString()));
                 values.put("federacao_nasc_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), spUFNasc_Cert.getSelectedItem().toString()));
                 values.put("municipio_reg_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), etMunicReg_Cert.getText().toString()));
                 values.put("federacao_reg_certidao", criptografiaAES.encrypt(Usuario.getUserPin(), spUFReg_Cert.getSelectedItem().toString()));

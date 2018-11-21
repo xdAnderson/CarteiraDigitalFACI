@@ -147,28 +147,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/etMatricula_Cert" />
 
             <EditText
-                android:id="@+id/etNaturalidade_Cert"
-                android:layout_width="187dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="1dp"
-                android:ems="10"
-                android:hint="Naturalidade"
-                android:inputType="textPersonName"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spSexo_Cert"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etDN_Cert" />
-
-            <EditText
                 android:id="@+id/etMunicReg_Cert"
                 android:layout_width="229dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="1dp"
                 android:ems="10"
                 android:hint="Município e UF de Registro"
@@ -178,7 +160,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etNaturalidade_Cert" />
+                app:layout_constraintTop_toBottomOf="@+id/spSexo_Cert" />
 
             <EditText
                 android:id="@+id/etLocalNasc_Cert"
@@ -335,15 +317,15 @@
 
             <Spinner
                 android:id="@+id/spSexo_Cert"
-                android:layout_width="wrap_content"
+                android:layout_width="223dp"
                 android:layout_height="23dp"
-                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="6dp"
                 android:entries="@array/sexo"
-                app:layout_constraintBaseline_toBaselineOf="@+id/etNaturalidade_Cert"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/etNaturalidade_Cert" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etDN_Cert" />
 
             <Spinner
                 android:id="@+id/spUFNasc_Cert"

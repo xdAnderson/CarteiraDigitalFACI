@@ -12,7 +12,6 @@ public class DocumentoDataModel {
                 "  'dn_certidao' BLOB NULL,\n" +
                 "  'hora_nasc_certidao' BLOB NULL,\n" +
                 "  'municipio_nasc_certidao' BLOB NULL,\n" +
-                "  'naturalidade_certidao' BLOB NULL,\n" +
                 "  'federacao_nasc_certidao' BLOB NULL,\n" +
                 "  'municipio_reg_certidao' BLOB NULL,\n" +
                 "  'federacao_reg_certidao' BLOB NULL,\n" +

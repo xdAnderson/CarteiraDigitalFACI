@@ -29,8 +29,6 @@ public class DocumentoController extends DataSource {
         String sql = "SELECT * FROM certidao WHERE id_usuario = \""+Usuario.USUARIO_ATIVO.getUSER_id()+"\";";
         Cursor cursor = db.rawQuery(sql,null);
         cursor.moveToFirst();
-        objCertidao.setCERTIDAO_cpf(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("cpf_certidao"))));
         objCertidao.setCERTIDAO_nome(CriptografiaAES.decrypt(Usuario.getUserPin(),
                 cursor.getBlob(cursor.getColumnIndex("nome_certidao"))));
         objCertidao.setCERTIDAO_matricula(CriptografiaAES.decrypt(Usuario.getUserPin(),
@@ -75,8 +73,6 @@ public class DocumentoController extends DataSource {
                 cursor.getBlob(cursor.getColumnIndex("n_nasc_vivo_certidao"))));
         objCertidao.setCERTIDAO_averb_anot(CriptografiaAES.decrypt(Usuario.getUserPin(),
                 cursor.getBlob(cursor.getColumnIndex("anot_averb_certidao"))));
-        objCertidao.setCERTIDAO_naturalidade(CriptografiaAES.decrypt(Usuario.getUserPin(),
-                cursor.getBlob(cursor.getColumnIndex("naturalidade_certidao"))));
         db.close();
         return objCertidao;
     }

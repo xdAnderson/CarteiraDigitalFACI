@@ -7,119 +7,300 @@
     android:background="@android:color/darker_gray"
     tools:context=".view.fragment.FragmentMenuPrincipal">
 
-    <Button
-        android:id="@+id/btEditarCert"
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/botao_esquerdo"
-        android:drawableTop="@drawable/icon_edit"
-        android:text="Editar"
-        android:textColor="@android:color/background_light"
-        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btExcluirCert"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <Button
-        android:id="@+id/btExcluirCert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/botao_direito"
-        android:drawableTop="@drawable/icon_delete"
-        android:text="Excluir"
-        android:textColor="@android:color/background_light"
-        android:textSize="12sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btEditarCert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btEditarCert" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="384dp"
-        android:layout_height="487dp"
-        android:src="@drawable/mask_certidao"
-        app:layout_constraintBottom_toTopOf="@+id/btEditarCert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvNome_Cert"
-        android:layout_width="210dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="35dp"
-        android:text="TextView"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        tools:layout_editor_absoluteY="163dp" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvHoraNasc_Cert"
-        android:layout_width="77dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="35dp"
-        android:text="TextView"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        tools:layout_editor_absoluteY="191dp" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvHoraNasc_Cert2"
-        android:layout_width="233dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvHoraNasc_Cert"
-        tools:layout_editor_absoluteY="191dp" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="3dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvDiaNasc_Cert"
-        android:layout_width="25dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="4dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintStart_toEndOf="@+id/tvNome_Cert"
-        tools:layout_editor_absoluteY="163dp" />
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="384dp"
+                        android:layout_height="487dp"
+                        android:src="@drawable/mask_certidao"
+                        app:layout_constraintBottom_toTopOf="@+id/btEditarCert"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvMesNasc_Cert"
-        android:layout_width="26dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="5dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintStart_toEndOf="@+id/tvDiaNasc_Cert"
-        tools:layout_editor_absoluteY="163dp" />
+                    <TextView
+                        android:id="@+id/tvMesNasc_Cert"
+                        android:layout_width="26dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvAnoNasc_Cert"
+                        app:layout_constraintStart_toEndOf="@+id/tvDiaNasc_Cert" />
 
-    <TextView
-        android:id="@+id/tvMesNasc_Cert2"
-        android:layout_width="39dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="35dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvMesNasc_Cert"
-        tools:layout_editor_absoluteY="163dp" />
+                    <Button
+                        android:id="@+id/btEditarCert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/botao_esquerdo"
+                        android:drawableTop="@drawable/icon_edit"
+                        android:text="Editar"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btExcluirCert"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+                    <TextView
+                        android:id="@+id/tvAnoNasc_Cert"
+                        android:layout_width="39dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="6dp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvMesNasc_Cert"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMat_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvHoraNasc_Cert"
+                        android:layout_width="77dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDiaNasc_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvSexo_Cert"
+                        android:layout_width="29dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvLocalNasc_Cert"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMuncUFNasc_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvDNExt_Cert"
+                        android:layout_width="210dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="6dp"
+                        android:text="qeqe"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMat_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvLocalNasc_Cert"
+                        android:layout_width="115dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvMuncUFReg_Cert"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMuncUFNasc_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvDiaNasc_Cert"
+                        android:layout_width="25dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tvMesNasc_Cert"
+                        app:layout_constraintStart_toEndOf="@+id/tvDNExt_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvAvos_Cert"
+                        android:layout_width="317dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFiliacao_Cert" />
+
+                    <Button
+                        android:id="@+id/btExcluirCert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/botao_direito"
+                        android:drawableTop="@drawable/icon_delete"
+                        android:text="Excluir"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="12sp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/btEditarCert"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btEditarCert" />
+
+                    <TextView
+                        android:id="@+id/tvQuantGem_Cert"
+                        android:layout_width="43dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="39dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAvos_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvDataRegExt_Cert"
+                        android:layout_width="180dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvQuantGem_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvAverAnot_Cert"
+                        android:layout_width="317dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="8dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDataRegExt_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvDNV_Cert"
+                        android:layout_width="131dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvDataRegExt_Cert"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNomeMatGem_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvNomeMatGem_Cert"
+                        android:layout_width="260dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="13dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvQuantGem_Cert"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAvos_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvMuncUFNasc_Cert"
+                        android:layout_width="233dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@+id/tvHoraNasc_Cert"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDiaNasc_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvMuncUFReg_Cert"
+                        android:layout_width="164dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvHoraNasc_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvFiliacao_Cert"
+                        android:layout_width="316dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="14dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMuncUFReg_Cert" />
+
+                    <TextView
+                        android:id="@+id/tvNome_Cert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="120dp"
+                        android:text="   "
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageView7"
+                        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+                    <TextView
+                        android:id="@+id/tvMat_Cert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="4dp"
+                        android:text="12413"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageView7"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNome_Cert" />
+
+                </android.support.constraint.ConstraintLayout>
+            </HorizontalScrollView>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
