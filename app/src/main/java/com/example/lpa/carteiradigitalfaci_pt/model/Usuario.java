@@ -8,6 +8,7 @@ public class Usuario {
     private String USER_email;
     private String USER_senha;
     private String USER_status;
+    private String pin;
 
     private static String USER_PIN;
 
@@ -61,5 +62,13 @@ public class Usuario {
 
     public void setUSER_status(String USER_status) {
         this.USER_status = USER_status;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }

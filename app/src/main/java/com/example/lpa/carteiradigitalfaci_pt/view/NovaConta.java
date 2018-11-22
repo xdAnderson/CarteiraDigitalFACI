@@ -19,6 +19,7 @@ import com.example.lpa.carteiradigitalfaci_pt.R;
 import com.example.lpa.carteiradigitalfaci_pt.controller.CriptografiaHash;
 import com.example.lpa.carteiradigitalfaci_pt.controller.UsuarioController;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
+import com.example.lpa.carteiradigitalfaci_pt.util.IncluirAsyncTask;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -40,10 +41,16 @@ public class NovaConta extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Usuario obj = new Usuario();
+                obj.setUSER_nome(etNomeComp.getText().toString());
+                obj.setUSER_email(etEmail.getText().toString());
+                obj.setUSER_senha(etSenha.getText().toString());
+                obj.setUSER_status("1");
+
                 if(etSenha.getText().toString().equals(etConfSenha.getText().toString())){
-
-
                     final UsuarioController usuarioController = new UsuarioController(getBaseContext());
+
+                    //IncluirAsyncTask task = new IncluirAsyncTask();
 
                     if(usuarioController.verificarSePossuiConta(etEmail.getText().toString())){
                         Toast.makeText(getApplicationContext(), "Você já possui uma conta ativa, tente logar!",Toast.LENGTH_LONG).show();

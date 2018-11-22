@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Spinner;
 
+import com.example.lpa.carteiradigitalfaci_pt.datamodel.DocumentoDataModel;
+import com.example.lpa.carteiradigitalfaci_pt.datamodel.UsuarioDataModel;
 import com.example.lpa.carteiradigitalfaci_pt.datasource.DataSource;
 import com.example.lpa.carteiradigitalfaci_pt.model.Documentos.CNH;
 import com.example.lpa.carteiradigitalfaci_pt.model.Documentos.CPF;
@@ -289,7 +291,6 @@ public class DocumentoController extends DataSource {
         }
         return 0;
     }
-
     public boolean verificarSePossuiDocumento(String id_usuario, String documento){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM "+documento+" WHERE id_usuario = \""+id_usuario+"\";";
@@ -303,7 +304,6 @@ public class DocumentoController extends DataSource {
             return false;
         }
     }
-
     public boolean inserirDocumento(ContentValues values, String documento){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -323,6 +323,34 @@ public class DocumentoController extends DataSource {
         String[] whereArgs = {Integer.toString(Usuario.USUARIO_ATIVO.getUSER_id())};
         boolean excluiu = db.delete(documento,"id_usuario = ?", whereArgs)>0;
         return excluiu;
+    }
+
+
+
+    public void deletarTabela(){
+        try{
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("DROP TABLE IF EXISTS usuario, certidao, cnh, cpf, ctps, titulo, reservista, outros, rg");
+        }catch(Exception e){
+
+        }
+    }
+
+    public void criarTabela(){
+        try{
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL(UsuarioDataModel.criarTabelaUsuario());
+            db.execSQL(DocumentoDataModel.criarTabelaCertidao());
+            db.execSQL(DocumentoDataModel.criarTabelaCNH());
+            db.execSQL(DocumentoDataModel.criarTabelaCPF());
+            db.execSQL(DocumentoDataModel.criarTabelaReservista());
+            db.execSQL(DocumentoDataModel.criarTabelaRG());
+            db.execSQL(DocumentoDataModel.criarTabelaTitulo());
+            db.execSQL(DocumentoDataModel.criarTabelaOutros());
+            db.execSQL(DocumentoDataModel.criarTabelaCTPS());
+        }catch (Exception e){
+
+        }
     }
 
 }

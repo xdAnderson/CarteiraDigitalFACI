@@ -38,8 +38,8 @@ public class DocumentoDataModel {
         String qr;
         qr = "CREATE TABLE IF NOT EXISTS 'cnh' (\n" +
                 "  'id_usuario' INTEGER(255) NOT NULL,\n" +
-                "  'numero_reg_cnh_cnh' BLOB NULL,\n" +
-                "  'rg_orgao_uf_cnh' BLOB NULL,\n" +
+                "  'numero_cnh' BLOB NULL,\n" +
+                "  'uf_cnh' BLOB NULL,\n" +
                 "  'cpf_cnh' BLOB NULL,\n" +
                 "  'dn_cnh' BLOB NULL,\n" +
                 "  'filiacao_mae_cnh' BLOB NULL,\n" +
@@ -48,11 +48,14 @@ public class DocumentoDataModel {
                 "  'acc_cnh' BLOB NULL,\n" +
                 "  'categoria_cnh' BLOB NULL,\n" +
                 "  'validade_cnh' BLOB NULL,\n" +
-                "  'primeira_cnh_cnh' BLOB NULL,\n" +
+                "  'primeira_cnh' BLOB NULL,\n" +
                 "  'local_cnh' BLOB NULL,\n" +
                 "  'data_emissao_cnh' BLOB NULL,\n" +
+                "  'num_rg' BLOB NULL,\n" +
+                "  'nome_cnh' BLOB NULL,\n" +
+                "  'orgao_cnh' BLOB NULL,\n" +
                 "  'observacao_cnh' BLOB NULL,\n" +
-                "  PRIMARY KEY ('numero_reg_cnh_cnh'),\n" +
+                "  PRIMARY KEY ('numero_cnh'),\n" +
                 "    FOREIGN KEY ('id_usuario')\n" +
                 "    REFERENCES 'usuario' ('id_usuario'));\n";
         return qr;
@@ -73,23 +76,21 @@ public class DocumentoDataModel {
 
     public static String criarTabelaOutros(){
         String qr;
-        qr = "CREATE TABLE IF NOT EXISTS 'outros' (" +
-                "'id_usuario' INTEGER(255) NOT NULL, " +
-                "'id_outros' INTEGER(255), " +
-                "'nome_documento' BLOB NOT NULL, " +
-                "'campo1' BLOB NULL, " +
-                "'campo2' BLOB NULL, " +
-                "'campo3' BLOB NULL, " +
-                "'campo4' BLOB NULL, " +
-                "'campo5' BLOB NULL, " +
-                "'campo6' BLOB NULL, " +
-                "'campo7' BLOB NULL, " +
-                "'campo8' BLOB NULL, " +
-                "'campo9' BLOB NULL, " +
-                "'campo10' BLOB NULL, " +
-                "PRIMARY KEY ('id_outros'), " +
-                "FOREIGN KEY ('id_usuario') " +
-                    "REFERENCES 'usuario' ('id_usuario'));";
+        qr = "CREATE TABLE outros (\n" +
+                "  id_usuario INT(255) NOT NULL,\n" +
+                "  id_outros INT(255) NOT NULL,\n" +
+                "  nome_documento BLOB NOT NULL,\n" +
+                "  campo1 BLOB NULL,\n" +
+                "  campo2 BLOB NULL,\n" +
+                "  campo3 BLOB NULL,\n" +
+                "  campo4 BLOB NULL,\n" +
+                "  campo5 BLOB NULL,\n" +
+                "  campo6 BLOB NULL,\n" +
+                "  campo7 BLOB NULL,\n" +
+                "  campo8 BLOB NULL,\n" +
+                "  campo9 BLOB NULL,\n" +
+                "  campo10 BLOB NULL,\n" +
+                "  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario));";
         return qr;
     }
 
@@ -118,67 +119,61 @@ public class DocumentoDataModel {
 
     public static String criarTabelaRG(){
         String qr;
-        qr = "CREATE TABLE IF NOT EXISTS 'rg' (\n" +
-                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
-                "  'numero_rg_rg' BLOB NULL,\n" +
-                "  'data_expedicao_rg' BLOB NULL,\n" +
-                "  'nome_rg' BLOB NULL,\n" +
-                "  'filiacao_mae_rg' BLOB NULL,\n" +
-                "  'filiacao_pai_rg' BLOB NULL,\n" +
-                "  'naturalidade_rg' BLOB NULL,\n" +
-                "  'dn_rg' BLOB NULL,\n" +
-                "  'doc_origem_rg' BLOB NOT NULL,\n" +
-                "  'cpf_rg' BLOB NOT NULL,\n" +
-                "  PRIMARY KEY ('numero_rg_rg'),\n" +
-                "    FOREIGN KEY ('id_usuario')\n" +
-                "    REFERENCES 'usuario' ('id_usuario'));\n";
+        qr = "CREATE TABLE rg (\n" +
+                "  numero_rg BLOB NULL,\n" +
+                "  id_usuario INT(255) NOT NULL,\n" +
+                "  data_expedicao_rg BLOB NULL,\n" +
+                "  nome_rg BLOB NULL,\n" +
+                "  filiacao_mae_rg BLOB NULL,\n" +
+                "  filiacao_pai_rg BLOB NULL,\n" +
+                "  naturalidade_rg BLOB NULL,\n" +
+                "  dn_rg BLOB NULL,\n" +
+                "  doc_origem_rg BLOB NULL,\n" +
+                "  cpf_rg BLOB NULL,\n" +
+                "  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario));";
         return qr;
     }
 
     public static String criarTabelaTitulo(){
         String qr;
-        qr = "CREATE TABLE IF NOT EXISTS 'titulo' (\n" +
-                "  'id_usuario' INTEGER(255) NOT NULL,\n" +
-                "  'num_insc_dv_titulo' BLOB NULL,\n" +
-                "  'nome_titulo' BLOB NULL,\n" +
-                "  'dn_titulo' BLOB NULL,\n" +
-                "  'zona_titulo' BLOB NULL,\n" +
-                "  'secao_titulo' BLOB NULL,\n" +
-                "  'munic_uf_titulo' BLOB NULL,\n" +
-                "  'data_emissao_titulo' BLOB NULL,\n" +
-                "  PRIMARY KEY ('num_insc_dv_titulo'),\n" +
-                "    FOREIGN KEY ('id_usuario')\n" +
-                "    REFERENCES 'usuario' ('id_usuario'));\n";
+        qr = "CREATE TABLE titulo (\n" +
+                "  id_usuario INT(255) NOT NULL,\n" +
+                "  num_insc_dv_titulo BLOB NULL,\n" +
+                "  nome_titulo BLOB NULL,\n" +
+                "  dn_titulo BLOB NULL,\n" +
+                "  zona_titulo BLOB NULL,\n" +
+                "  secao_titulo BLOB NULL,\n" +
+                "  munic_uf_titulo BLOB NULL,\n" +
+                "  data_emissao_titulo BLOB NULL,\n" +
+                "  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario));";
         return qr;
     }
 
     public static String criarTabelaCTPS(){
         String qr;
-        qr = "CREATE TABLE 'ctps' (" +
-                "'id_usuario' INTEGER(255) NOT NULL, " +
-                "'pis_pasep_ctps' BLOB NULL, " +
-                "'numero_ctps' BLOB NULL, " +
-                "'serie_ctps' BLOB NULL, " +
-                "'uf_ctps' BLOB NULL, " +
-                "'nome_ctps' BLOB NULL, " +
-                "'loc_nasc_ctps' BLOB NULL, " +
-                "'dn_ctps' BLOB NULL, " +
-                "'sexo_ctps' BLOB NULL, " +
-                "'filiacao_mae_ctps' BLOB NULL, " +
-                "'filiacao_pai_ctps' BLOB NULL, " +
-                "'doc_apresentado_ctps' BLOB NULL, " +
-                "'est_civil_ctps' BLOB NULL, " +
-                "'cnh_ctps' BLOB NULL, " +
-                "'rg_ctps' BLOB NULL, " +
-                "'titulo_ctps' BLOB NULL, " +
-                "'tit_secao_ctps' BLOB NULL, " +
-                "'tit_zona_ctps' BLOB NULL, " +
-                "'cpf_ctps' BLOB NULL, " +
-                "'local_emissao_ctps' BLOB NULL, " +
-                "'data_emissao_ctps' BLOB NULL, " +
-                "PRIMARY KEY ('numero_ctps'), " +
-                "FOREIGN KEY ('id_usuario') " +
-                    "REFERENCES 'usuario' ('id_usuario'));";
+        qr = "CREATE TABLE ctps (\n" +
+                "  id_usuario INT(255) NOT NULL,\n" +
+                "  pis_pasep BLOB NULL,\n" +
+                "  numero_ctps BLOB NULL,\n" +
+                "  serie_ctps BLOB NULL,\n" +
+                "  uf_ctps BLOB NULL,\n" +
+                "  nome_ctps BLOB NULL,\n" +
+                "  loc_nasc_ctps BLOB NULL,\n" +
+                "  dn_ctps BLOB NULL,\n" +
+                "  sexo_ctps BLOB NULL,\n" +
+                "  filiacao_mae_ctps BLOB NULL,\n" +
+                "  filiacao_pai_ctps BLOB NULL,\n" +
+                "  doc_apresentado_ctps BLOB NULL,\n" +
+                "  est_civil_ctps BLOB NULL,\n" +
+                "  cnh_ctps BLOB NULL,\n" +
+                "  rg_ctps BLOB NULL,\n" +
+                "  titulo_ctps BLOB NULL,\n" +
+                "  tit_secao_ctps BLOB NULL,\n" +
+                "  tit_zona_ctps BLOB NULL,\n" +
+                "  cpf_ctps BLOB NULL,\n" +
+                "  local_emissao_ctps BLOB NULL,\n" +
+                "  data_emissao_ctps BLOB NULL,\n" +
+                "  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario));";
         return qr;
     }
 }
