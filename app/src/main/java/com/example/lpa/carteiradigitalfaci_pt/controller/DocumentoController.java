@@ -326,16 +326,6 @@ public class DocumentoController extends DataSource {
     }
 
 
-
-    public void deletarTabela(){
-        try{
-            SQLiteDatabase db = getWritableDatabase();
-            db.execSQL("DROP TABLE IF EXISTS usuario, certidao, cnh, cpf, ctps, titulo, reservista, outros, rg");
-        }catch(Exception e){
-
-        }
-    }
-
     public void criarTabela(){
         try{
             SQLiteDatabase db = getWritableDatabase();

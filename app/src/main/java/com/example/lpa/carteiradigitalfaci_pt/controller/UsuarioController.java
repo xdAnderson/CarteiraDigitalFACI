@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.lpa.carteiradigitalfaci_pt.datamodel.DocumentoDataModel;
+import com.example.lpa.carteiradigitalfaci_pt.datamodel.UsuarioDataModel;
 import com.example.lpa.carteiradigitalfaci_pt.datasource.DataSource;
 import com.example.lpa.carteiradigitalfaci_pt.model.Usuario;
 
@@ -18,6 +20,7 @@ public class UsuarioController extends DataSource {
         dados.put("nome_usuario", usu.getUSER_nome());
         dados.put("email_usuario", usu.getUSER_email());
         dados.put("senha_usuario", usu.getUSER_senha());
+        dados.put("pin", usu.getPin());
         dados.put("status_usuario", "1");
         dados.put("ult_usuario", "0");
 
@@ -196,5 +199,32 @@ public class UsuarioController extends DataSource {
         boolean isUpdate = db.update("produto", values, where, whereArgs)>0;
         db.close();
         return isUpdate;
+    }
+
+
+    public void deletarTabela(){
+        try{
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL("DELETE FROM usuario");
+        }catch(Exception e){
+
+        }
+    }
+
+    public void criarTabela() {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            db.execSQL(UsuarioDataModel.criarTabelaUsuario());
+            db.execSQL(DocumentoDataModel.criarTabelaCertidao());
+            db.execSQL(DocumentoDataModel.criarTabelaCNH());
+            db.execSQL(DocumentoDataModel.criarTabelaCPF());
+            db.execSQL(DocumentoDataModel.criarTabelaReservista());
+            db.execSQL(DocumentoDataModel.criarTabelaRG());
+            db.execSQL(DocumentoDataModel.criarTabelaTitulo());
+            db.execSQL(DocumentoDataModel.criarTabelaOutros());
+            db.execSQL(DocumentoDataModel.criarTabelaCTPS());
+        } catch (Exception e) {
+
+        }
     }
 }
